@@ -1,8 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import img from "../assets/logo.png";
 import GoogleFontLoader from "react-google-font-loader";
 
 function Signup(props) {
+  const [user, setUser] = useState({
+    firstName: "",
+    lastName: "",
+    mobileNo: "",
+    email: "",
+    password: "",
+  });
+
+  //Handling Input Values
+  const handleInput = (e) => {
+    let name = e.target.name;
+    let value = e.target.value;
+
+    setUser({
+      ...user,
+      [name]: value,
+    });
+  };
   return (
     <>
       <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
@@ -49,7 +67,11 @@ function Signup(props) {
                         type="text"
                         style={{ fontFamily: "Play" }}
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-[#03e9f4] outline-none"
-                        placeholder=""
+                        name="firstName"
+                        required
+                        autoComplete="off"
+                        value={user.firstName}
+                        onChange={handleInput}
                       />
                     </div>
                   </div>
@@ -70,7 +92,11 @@ function Signup(props) {
                         type="text"
                         style={{ fontFamily: "Play" }}
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-[#03e9f4] outline-none "
-                        placeholder=""
+                        name="lastName"
+                        required
+                        autoComplete="off"
+                        value={user.lastName}
+                        onChange={handleInput}
                       />
                     </div>
                   </div>
@@ -90,10 +116,14 @@ function Signup(props) {
                       </div>
                       <input
                         id="mobileNo"
-                        type="text"
+                        type="number"
                         style={{ fontFamily: "Play" }}
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-[#03e9f4] outline-none "
-                        placeholder=""
+                        name="mobileNo"
+                        required
+                        autoComplete="off"
+                        value={user.mobileNo}
+                        onChange={handleInput}
                       />
                     </div>
                   </div>
@@ -116,7 +146,11 @@ function Signup(props) {
                         type="email"
                         style={{ fontFamily: "Play" }}
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-[#03e9f4] outline-none "
-                        placeholder=""
+                        name="email"
+                        required
+                        autoComplete="off"
+                        value={user.email}
+                        onChange={handleInput}
                       />
                     </div>
                   </div>
@@ -139,7 +173,11 @@ function Signup(props) {
                         type="password"
                         style={{ fontFamily: "Play" }}
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-[#03e9f4] outline-none"
-                        placeholder=""
+                        name="password"
+                        required
+                        autoComplete="off"
+                        value={user.password}
+                        onChange={handleInput}
                       />
                     </div>
                   </div>
