@@ -1,11 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import img from "../assets/logo.png";
 import Signup from "./Signup";
 import { NavLink } from "react-router-dom";
 import GoogleFontLoader from "react-google-font-loader";
 
 const Login = (props) => {
-  const [openRegister, setOpenRegister] = React.useState(false);
+  const [openRegister, setOpenRegister] = useState(false);
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleInput = (e) => {
+    let name = e.target.name;
+    let value = e.target.value;
+
+    setUser({
+      ...user,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(user);
+  };
 
   // const handleClose = () => {
   //   setOpenRegister(false); // Set openRegister to false to close the login modal
@@ -64,96 +83,102 @@ const Login = (props) => {
                       </span>
                     </button>
                   </div>
-                  <div className="p-4 md:p-5">
-                    <form className="space-y-4" action="#">
-                      <div>
-                        <label
-                          htmlFor="email"
-                          style={{ fontFamily: "Play" }}
-                          className="block mb-2 text-sm font-medium text-[gray-300] "
-                        >
-                          Your email / Mobile No.
-                        </label>
-                        <input
-                          type="email"
-                          name="email"
-                          id="email"
-                          style={{ fontFamily: "Play" }}
-                          autoComplete="off"
-                          className="bg-grey-300 border-2 border-[#03e9f4] text-grey-900 text-sm rounded-lg block w-full p-2.5 focus:bg-[#cfd1d6]"
-                          placeholder="mobile no. / name@company.com"
-                          required
-                        />
-                      </div>
-                      <div>
-                        <label
-                          htmlFor="password"
-                          style={{ fontFamily: "Play" }}
-                          className="block mb-2 text-sm font-medium text-gray-900"
-                        >
-                          Your password
-                        </label>
-                        <input
-                          type="password"
-                          name="password"
-                          id="password"
-                          placeholder="••••••••"
-                          style={{ fontFamily: "Play" }}
-                          className="bg-grey-300 border-2 border-[#03e9f4] text-grey-900 text-sm rounded-lg focus:bg-[#cfd1d6]  block w-full p-2.5 "
-                          required
-                        />
-                      </div>
-                      <div className="flex justify-between">
-                        <div className="flex items-start">
-                          <div className="flex items-center h-5">
-                            <input
-                              id="remember"
-                              type="checkbox"
-                              value=""
-                              className="w-4 h-4 border border-black rounded bg-[#03e9f4]"
-                              required
-                            />
-                          </div>
+                  <form onSubmit={handleSubmit}>
+                    <div className="p-4 md:p-5">
+                      <form className="space-y-4" action="#">
+                        <div>
                           <label
-                            htmlFor="remember"
-                            className="ms-2 text-sm font-medium text-gray-900"
+                            htmlFor="email"
+                            style={{ fontFamily: "Play" }}
+                            className="block mb-2 text-sm font-medium text-[gray-300] "
+                          >
+                            Your email / Mobile No.
+                          </label>
+                          <input
+                            type="email"
+                            name="email"
+                            id="email"
+                            style={{ fontFamily: "Play" }}
+                            autoComplete="off"
+                            className="bg-grey-300 border-2 border-[#03e9f4] text-grey-900 text-sm rounded-lg block w-full p-2.5 focus:bg-[#cfd1d6]"
+                            placeholder="mobile no. / name@company.com"
+                            value={user.email}
+                            onChange={handleInput}
+                            required
+                          />
+                        </div>
+                        <div>
+                          <label
+                            htmlFor="password"
+                            style={{ fontFamily: "Play" }}
+                            className="block mb-2 text-sm font-medium text-gray-900"
+                          >
+                            Your password
+                          </label>
+                          <input
+                            type="password"
+                            name="password"
+                            id="password"
+                            placeholder="••••••••"
+                            style={{ fontFamily: "Play" }}
+                            className="bg-grey-300 border-2 border-[#03e9f4] text-grey-900 text-sm rounded-lg focus:bg-[#cfd1d6]  block w-full p-2.5 "
+                            value={user.password}
+                            onChange={handleInput}
+                            required
+                          />
+                        </div>
+                        <div className="flex justify-between">
+                          <div className="flex items-start">
+                            <div className="flex items-center h-5">
+                              <input
+                                id="remember"
+                                type="checkbox"
+                                value=""
+                                className="w-4 h-4 border border-black rounded bg-[#03e9f4]"
+                                required
+                              />
+                            </div>
+                            <label
+                              htmlFor="remember"
+                              className="ms-2 text-sm font-medium text-gray-900"
+                              style={{ fontFamily: "Play" }}
+                            >
+                              Remember me
+                            </label>
+                          </div>
+                          <a
+                            href="#"
+                            className="text-sm text-blue-700 hover:underline"
                             style={{ fontFamily: "Play" }}
                           >
-                            Remember me
-                          </label>
+                            Lost Password?
+                          </a>
                         </div>
-                        <a
-                          href="#"
-                          className="text-sm text-blue-700 hover:underline"
+                        <button
+                          type="submit"
+                          className="w-full focus:ring-4 focus:outline-none font-medium rounded-lg text-sm py-1 text-center text-[#03e9f4] text-[20px] border-2 border-[#03e9f4] hover:text-black hover:bg-[#03e9f4] my-4"
                           style={{ fontFamily: "Play" }}
                         >
-                          Lost Password?
-                        </a>
-                      </div>
-                      <button
-                        type="submit"
-                        className="w-full focus:ring-4 focus:outline-none font-medium rounded-lg text-sm py-1 text-center text-[#03e9f4] text-[20px] border-2 border-[#03e9f4] hover:text-black hover:bg-[#03e9f4] my-4"
-                        style={{ fontFamily: "Play" }}
-                      >
-                        Login to your account
-                      </button>
-                      <div
-                        className="text-sm font-medium text-gray-900 "
-                        style={{ fontFamily: "Play" }}
-                      >
-                        Not registered?{" "}
-                        <NavLink
-                          to="/Signup"
-                          href="#"
-                          className="text-blue-700 hover:underline "
+                          Login to your account
+                        </button>
+                        <div
+                          className="text-sm font-medium text-gray-900 "
                           style={{ fontFamily: "Play" }}
-                          // onClick={() => setOpenRegister(true)} // Changed to setOpenRegister
                         >
-                          Create account
-                        </NavLink>
-                      </div>
-                    </form>
-                  </div>
+                          Not registered?{" "}
+                          <NavLink
+                            to="/Signup"
+                            href="#"
+                            className="text-blue-700 hover:underline "
+                            style={{ fontFamily: "Play" }}
+                            // onClick={() => setOpenRegister(true)} // Changed to setOpenRegister
+                          >
+                            Create account
+                          </NavLink>
+                        </div>
+                      </form>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
