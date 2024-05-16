@@ -21,6 +21,12 @@ function Signup(props) {
       [name]: value,
     });
   };
+
+  //handling form submission//
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(user);
+  };
   return (
     <>
       <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
@@ -48,153 +54,156 @@ function Signup(props) {
                   Enter your information to register
                 </p>
               </div>
-              <div>
-                <div className="flex -mx-3 mb-5">
-                  <div className="w-1/2 px-3">
-                    <label
-                      htmlFor="firstName"
-                      style={{ fontFamily: "Play" }}
-                      className="text-xs font-semibold px-1"
-                    >
-                      First name
-                    </label>
-                    <div className="flex">
-                      <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                        <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
-                      </div>
-                      <input
-                        id="firstName"
-                        type="text"
+
+              <form onSubmit={handleSubmit}>
+                <div>
+                  <div className="flex -mx-3 mb-5">
+                    <div className="w-1/2 px-3">
+                      <label
+                        htmlFor="firstName"
                         style={{ fontFamily: "Play" }}
-                        className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-[#03e9f4] outline-none"
-                        name="firstName"
-                        required
-                        autoComplete="off"
-                        value={user.firstName}
-                        onChange={handleInput}
-                      />
+                        className="text-xs font-semibold px-1"
+                      >
+                        First name
+                      </label>
+                      <div className="flex">
+                        <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                          <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
+                        </div>
+                        <input
+                          id="firstName"
+                          type="text"
+                          style={{ fontFamily: "Play" }}
+                          className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-[#03e9f4] outline-none"
+                          name="firstName"
+                          required
+                          autoComplete="off"
+                          value={user.firstName}
+                          onChange={handleInput}
+                        />
+                      </div>
+                    </div>
+                    <div className="w-1/2 px-3">
+                      <label
+                        htmlFor="lastName"
+                        style={{ fontFamily: "Play" }}
+                        className="text-xs font-semibold px-1"
+                      >
+                        Last name
+                      </label>
+                      <div className="flex">
+                        <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                          <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
+                        </div>
+                        <input
+                          id="lastName"
+                          type="text"
+                          style={{ fontFamily: "Play" }}
+                          className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-[#03e9f4] outline-none "
+                          name="lastName"
+                          required
+                          autoComplete="off"
+                          value={user.lastName}
+                          onChange={handleInput}
+                        />
+                      </div>
                     </div>
                   </div>
-                  <div className="w-1/2 px-3">
-                    <label
-                      htmlFor="lastName"
-                      style={{ fontFamily: "Play" }}
-                      className="text-xs font-semibold px-1"
-                    >
-                      Last name
-                    </label>
-                    <div className="flex">
-                      <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                        <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
-                      </div>
-                      <input
-                        id="lastName"
-                        type="text"
+                  <div className="flex -mx-3 mb-5">
+                    <div className="w-full px-3">
+                      <label
+                        htmlFor="mobileNo"
                         style={{ fontFamily: "Play" }}
-                        className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-[#03e9f4] outline-none "
-                        name="lastName"
-                        required
-                        autoComplete="off"
-                        value={user.lastName}
-                        onChange={handleInput}
-                      />
+                        className="text-xs font-semibold px-1"
+                      >
+                        Mobile No
+                      </label>
+                      <div className="flex">
+                        <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                          <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
+                        </div>
+                        <input
+                          id="mobileNo"
+                          type="number"
+                          style={{ fontFamily: "Play" }}
+                          className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-[#03e9f4] outline-none "
+                          name="mobileNo"
+                          required
+                          autoComplete="off"
+                          value={user.mobileNo}
+                          onChange={handleInput}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex -mx-3 mb-5">
+                    <div className="w-full px-3">
+                      <label
+                        htmlFor="email"
+                        style={{ fontFamily: "Play" }}
+                        className="text-xs font-semibold px-1"
+                      >
+                        Email
+                      </label>
+                      <div className="flex">
+                        <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                          <i className="mdi mdi-email-outline text-gray-400 text-lg"></i>
+                        </div>
+                        <input
+                          id="email"
+                          type="email"
+                          style={{ fontFamily: "Play" }}
+                          className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-[#03e9f4] outline-none "
+                          name="email"
+                          required
+                          autoComplete="off"
+                          value={user.email}
+                          onChange={handleInput}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex -mx-3 mb-12">
+                    <div className="w-full px-3">
+                      <label
+                        htmlFor="password"
+                        style={{ fontFamily: "Play" }}
+                        className="text-xs font-semibold px-1"
+                      >
+                        Password
+                      </label>
+                      <div className="flex">
+                        <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                          <i className="mdi mdi-lock-outline text-gray-400 text-lg"></i>
+                        </div>
+                        <input
+                          id="password"
+                          type="password"
+                          style={{ fontFamily: "Play" }}
+                          className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-[#03e9f4] outline-none"
+                          name="password"
+                          required
+                          autoComplete="off"
+                          value={user.password}
+                          onChange={handleInput}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex -mx-3">
+                    <div className="w-full px-3">
+                      <button
+                        type="submit"
+                        style={{ fontFamily: "Play" }}
+                        className="w-full focus:outline-none font-medium rounded-lg text-sm py-2.5 text-center text-[#03e9f4] text-[20px] border-2 border-[#03e9f4] hover:text-black hover:bg-[#03e9f4] my-4"
+                        // onClick={props.handleClose}
+                      >
+                        Sign Up
+                      </button>
                     </div>
                   </div>
                 </div>
-                <div className="flex -mx-3 mb-5">
-                  <div className="w-full px-3">
-                    <label
-                      htmlFor="mobileNo"
-                      style={{ fontFamily: "Play" }}
-                      className="text-xs font-semibold px-1"
-                    >
-                      Mobile No
-                    </label>
-                    <div className="flex">
-                      <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                        <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
-                      </div>
-                      <input
-                        id="mobileNo"
-                        type="number"
-                        style={{ fontFamily: "Play" }}
-                        className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-[#03e9f4] outline-none "
-                        name="mobileNo"
-                        required
-                        autoComplete="off"
-                        value={user.mobileNo}
-                        onChange={handleInput}
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="flex -mx-3 mb-5">
-                  <div className="w-full px-3">
-                    <label
-                      htmlFor="email"
-                      style={{ fontFamily: "Play" }}
-                      className="text-xs font-semibold px-1"
-                    >
-                      Email
-                    </label>
-                    <div className="flex">
-                      <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                        <i className="mdi mdi-email-outline text-gray-400 text-lg"></i>
-                      </div>
-                      <input
-                        id="email"
-                        type="email"
-                        style={{ fontFamily: "Play" }}
-                        className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-[#03e9f4] outline-none "
-                        name="email"
-                        required
-                        autoComplete="off"
-                        value={user.email}
-                        onChange={handleInput}
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="flex -mx-3 mb-12">
-                  <div className="w-full px-3">
-                    <label
-                      htmlFor="password"
-                      style={{ fontFamily: "Play" }}
-                      className="text-xs font-semibold px-1"
-                    >
-                      Password
-                    </label>
-                    <div className="flex">
-                      <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
-                        <i className="mdi mdi-lock-outline text-gray-400 text-lg"></i>
-                      </div>
-                      <input
-                        id="password"
-                        type="password"
-                        style={{ fontFamily: "Play" }}
-                        className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-[#03e9f4] outline-none"
-                        name="password"
-                        required
-                        autoComplete="off"
-                        value={user.password}
-                        onChange={handleInput}
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="flex -mx-3">
-                  <div className="w-full px-3">
-                    <button
-                      type="submit"
-                      style={{ fontFamily: "Play" }}
-                      className="w-full focus:outline-none font-medium rounded-lg text-sm py-2.5 text-center text-[#03e9f4] text-[20px] border-2 border-[#03e9f4] hover:text-black hover:bg-[#03e9f4] my-4"
-                      // onClick={props.handleClose}
-                    >
-                      Sign Up
-                    </button>
-                  </div>
-                </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>
