@@ -1,7 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import GoogleFontLoader from "react-google-font-loader";
 
 const ContactusPage = () => {
+  const [contact, setContact] = useState({
+    name: "",
+    location: "",
+    phone: "",
+    email: "",
+    note: "",
+  });
+
+  const handleInput = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+
+    setContact({
+      ...contact,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(contact);
+  };
+
   return (
     <>
       <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
@@ -178,7 +201,7 @@ const ContactusPage = () => {
           >
             Get Free a Quote.
           </div>
-          <form className="w-full max-w-md">
+          <form onSubmit={handleSubmit} className="w-full max-w-md">
             <div className="mb-4 mt-10 flex justify-between">
               <div className="w-1/2 mr-2">
                 <label
@@ -191,7 +214,10 @@ const ContactusPage = () => {
                 <input
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="name"
+                  name="name"
                   type="text"
+                  value={contact.name}
+                  onChange={handleInput}
                   placeholder="Name"
                   style={{ fontFamily: "Play" }}
                 />
@@ -207,7 +233,10 @@ const ContactusPage = () => {
                 <input
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="location"
+                  name="location"
                   type="text"
+                  value={contact.location}
+                  onChange={handleInput}
                   placeholder="Location"
                   style={{ fontFamily: "Play" }}
                 />
@@ -224,7 +253,10 @@ const ContactusPage = () => {
               <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="phone"
+                name="phone"
                 type="text"
+                value={contact.phone}
+                onChange={handleInput}
                 placeholder="Phone"
                 style={{ fontFamily: "Play" }}
               />
@@ -240,7 +272,10 @@ const ContactusPage = () => {
               <input
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="email"
+                name="email"
                 type="email"
+                value={contact.email}
+                onChange={handleInput}
                 placeholder="Email"
                 style={{ fontFamily: "Play" }}
               />
@@ -256,6 +291,10 @@ const ContactusPage = () => {
               <textarea
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="note"
+                name="note"
+                type="text"
+                value={contact.note}
+                onChange={handleInput}
                 placeholder="Note"
                 rows="4"
                 style={{ fontFamily: "Play" }}
@@ -263,7 +302,7 @@ const ContactusPage = () => {
             </div>
             <button
               className="w-full bg-[#03E9F4] hover:bg-[#45d8e2] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="button"
+              type="submit"
               style={{ fontFamily: "Play" }}
             >
               Submit
