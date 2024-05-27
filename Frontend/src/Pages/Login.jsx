@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import img from "../assets/logo.png";
 import Signup from "./Signup";
 import { NavLink } from "react-router-dom";
 import GoogleFontLoader from "react-google-font-loader";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 const Login = (props) => {
+  const loginImgRef = useRef();
   const [openRegister, setOpenRegister] = useState(false);
   const [user, setUser] = useState({
     email: "",
@@ -30,6 +33,18 @@ const Login = (props) => {
   //   setOpenRegister(false); // Set openRegister to false to close the login modal
   // };
 
+  //<<<<<<<<<<<<<<<<<<//GSAP//>>>>>>>>>>>>>>>//
+
+  useGSAP(() => {
+    gsap.to(loginImgRef.current, {
+      rotate: 720,
+      duration: 5,
+      delay: 1,
+      ease: "circ.inOut",
+      repeat: -1,
+    });
+  });
+
   return (
     <>
       <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
@@ -44,7 +59,7 @@ const Login = (props) => {
             >
               {/* Left side div with image */}
               <div className="h-[70vh] w-[70vh] bg-zinc-400 py-10 px-10 rounded-l-lg">
-                <img src={img} alt="" />
+                <img ref={loginImgRef} src={img} alt="" />
               </div>
 
               {/* Right side modal content */}
