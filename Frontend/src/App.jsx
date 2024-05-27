@@ -2,7 +2,7 @@ import Navbar from "./component/Navbar";
 import HeroSection from "./component/HeroSection";
 import Client from "./component/Client";
 import Router from "./component/Router";
-import Login from "./pages/Login";
+// import Login from "./pages/Login";
 import Adv from "./component/Adv";
 import Promo from "./component/Promo";
 import Services from "./component/Services";
@@ -12,7 +12,7 @@ import Feature from "./component/Feature";
 import Support from "./component/Support";
 import Contactus from "./component/Contactus";
 import Footer from "./component/Footer";
-import Signup from "./pages/Signup";
+// import Signup from "./pages/Signup";
 
 function App() {
   return (

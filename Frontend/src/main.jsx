@@ -7,6 +7,7 @@ import ServicesPage from "./Pages/ServicesPage.jsx";
 import ContactusPage from "./Pages/ContactusPage.jsx";
 import Layout from "./Layout.jsx";
 import Signup from "./Pages/Signup.jsx";
+import Error from "./Pages/Error.jsx";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
     ],
   },
   { path: "Signup", element: <Signup /> },
+  { path: "*", element: <Error /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
