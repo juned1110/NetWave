@@ -4,9 +4,9 @@ import GoogleFontLoader from "react-google-font-loader";
 
 function Signup(props) {
   const [user, setUser] = useState({
-    firstName: "",
-    lastName: "",
-    mobileNo: "",
+    firstname: "",
+    lastname: "",
+    mobile: "",
     email: "",
     password: "",
   });
@@ -23,9 +23,22 @@ function Signup(props) {
   };
 
   //handling form submission//
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert(user);
+    console.log(user);
+    try {
+      const response = await fetch(`http://localhost:5000/api/auth/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      });
+
+      console.log(response);
+    } catch (error) {
+      console.log("Signup Error", error);
+    }
   };
   return (
     <>
@@ -60,7 +73,7 @@ function Signup(props) {
                   <div className="flex -mx-3 mb-5">
                     <div className="w-1/2 px-3">
                       <label
-                        htmlFor="firstName"
+                        htmlFor="firstname"
                         style={{ fontFamily: "Play" }}
                         className="text-xs font-semibold px-1"
                       >
@@ -71,21 +84,21 @@ function Signup(props) {
                           <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
                         </div>
                         <input
-                          id="firstName"
+                          id="firstname"
                           type="text"
                           style={{ fontFamily: "Play" }}
                           className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-[#03e9f4] outline-none"
-                          name="firstName"
+                          name="firstname"
                           required
                           autoComplete="off"
-                          value={user.firstName}
+                          value={user.firstname}
                           onChange={handleInput}
                         />
                       </div>
                     </div>
                     <div className="w-1/2 px-3">
                       <label
-                        htmlFor="lastName"
+                        htmlFor="lastname"
                         style={{ fontFamily: "Play" }}
                         className="text-xs font-semibold px-1"
                       >
@@ -96,14 +109,14 @@ function Signup(props) {
                           <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
                         </div>
                         <input
-                          id="lastName"
+                          id="lastname"
                           type="text"
                           style={{ fontFamily: "Play" }}
                           className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-[#03e9f4] outline-none "
-                          name="lastName"
+                          name="lastname"
                           required
                           autoComplete="off"
-                          value={user.lastName}
+                          value={user.lastname}
                           onChange={handleInput}
                         />
                       </div>
@@ -112,7 +125,7 @@ function Signup(props) {
                   <div className="flex -mx-3 mb-5">
                     <div className="w-full px-3">
                       <label
-                        htmlFor="mobileNo"
+                        htmlFor="mobile"
                         style={{ fontFamily: "Play" }}
                         className="text-xs font-semibold px-1"
                       >
@@ -123,14 +136,14 @@ function Signup(props) {
                           <i className="mdi mdi-account-outline text-gray-400 text-lg"></i>
                         </div>
                         <input
-                          id="mobileNo"
+                          id="mobile"
                           type="number"
                           style={{ fontFamily: "Play" }}
                           className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-[#03e9f4] outline-none "
-                          name="mobileNo"
+                          name="mobile"
                           required
                           autoComplete="off"
-                          value={user.mobileNo}
+                          value={user.mobile}
                           onChange={handleInput}
                         />
                       </div>
