@@ -4,6 +4,8 @@ import GoogleFontLoader from "react-google-font-loader";
 import { useNavigate } from "react-router-dom";
 import Login from "../Pages/Login";
 
+const URL = "http://localhost:5000/api/auth/register";
+
 function Signup(props) {
   const [showModal, setShowModal] = useState(false);
   const [user, setUser] = useState({
@@ -32,7 +34,7 @@ function Signup(props) {
     e.preventDefault();
     console.log(user);
     try {
-      const response = await fetch(`http://localhost:5000/api/auth/register`, {
+      const response = await fetch(URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -238,7 +240,13 @@ function Signup(props) {
       </div>
       {/* ) : null} */}
 
-      {showModal && <Login showModal={showModal} closeModal={true} showHideCrossBtn={false} />}
+      {showModal && (
+        <Login
+          showModal={showModal}
+          closeModal={true}
+          showHideCrossBtn={false}
+        />
+      )}
     </>
   );
 }

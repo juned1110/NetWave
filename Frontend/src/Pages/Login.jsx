@@ -5,7 +5,9 @@ import { NavLink } from "react-router-dom";
 import GoogleFontLoader from "react-google-font-loader";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { useNavigate } from "react-router-dom";
 
+const URL = "http://localhost:5000/api/auth/login";
 const Login = (props) => {
   console.log("fffffff====>", props);
   const loginImgRef = useRef();
@@ -14,6 +16,8 @@ const Login = (props) => {
     email: "",
     password: "",
   });
+
+  const navigate = useNavigate();
 
   const handleInput = (e) => {
     let name = e.target.name;
@@ -25,9 +29,32 @@ const Login = (props) => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(user);
+    try {
+      const response = await fetch(URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      });
+      console.log("login form", response);
+
+      if (response.ok) {
+        alert("valid Credential");
+        setUser({
+          email: "",
+          password: "",
+        });
+        navigate("/");
+      } else {
+        alert("Invalid Credential");
+        console.log("Invalid Credential");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   // const handleClose = () => {
