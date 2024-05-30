@@ -106,7 +106,13 @@ const Navbar = () => {
           </button>
         </nav>
       </div>
-      {showModal && <Login showModal={showModal} closeModal={closeModal} />}
+      {showModal && (
+        <Login
+          showModal={showModal}
+          closeModal={closeModal}
+          showHideCrossBtn={true}
+        />
+      )}
       {isHomeActive && <HeroSection />}
       {isHomeActive && <Client />}
       {isHomeActive && <Router />}

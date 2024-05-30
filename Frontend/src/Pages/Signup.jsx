@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import img from "../assets/logo.png";
 import GoogleFontLoader from "react-google-font-loader";
+import { useNavigate } from "react-router-dom";
+import Login from "../Pages/Login";
 
 function Signup(props) {
+  const [showModal, setShowModal] = useState(false);
   const [user, setUser] = useState({
     firstname: "",
     lastname: "",
@@ -10,6 +13,8 @@ function Signup(props) {
     email: "",
     password: "",
   });
+
+  const navigate = useNavigate();
 
   //Handling Input Values
   const handleInput = (e) => {
@@ -35,6 +40,16 @@ function Signup(props) {
         body: JSON.stringify(user),
       });
 
+      if (response.ok) {
+        setUser({
+          firstname: "",
+          lastname: "",
+          mobile: "",
+          email: "",
+          password: "",
+        });
+        setShowModal(true);
+      }
       console.log(response);
     } catch (error) {
       console.log("Signup Error", error);
@@ -222,6 +237,8 @@ function Signup(props) {
         </div>
       </div>
       {/* ) : null} */}
+
+      {showModal && <Login showModal={showModal} closeModal={true} showHideCrossBtn={false} />}
     </>
   );
 }
