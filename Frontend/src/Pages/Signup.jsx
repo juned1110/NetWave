@@ -3,6 +3,7 @@ import img from "../assets/logo.png";
 import GoogleFontLoader from "react-google-font-loader";
 import { useNavigate } from "react-router-dom";
 import Login from "../Pages/Login";
+import { useAuth } from "../store/auth";
 
 const URL = "http://localhost:5000/api/auth/register";
 
@@ -17,6 +18,8 @@ function Signup(props) {
   });
 
   const navigate = useNavigate();
+
+  const { storeTokenInLS } = useAuth();
 
   //Handling Input Values
   const handleInput = (e) => {
@@ -43,6 +46,10 @@ function Signup(props) {
       });
 
       if (response.ok) {
+        const res_data = await response.json();
+        console.log("response from server", res_data);
+        //stored token in localHost
+        storeTokenInLS(res_data.token);
         setUser({
           firstname: "",
           lastname: "",

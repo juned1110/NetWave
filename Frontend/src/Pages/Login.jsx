@@ -5,6 +5,7 @@ import GoogleFontLoader from "react-google-font-loader";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../store/auth";
 
 const URL = "http://localhost:5000/api/auth/login";
 const Login = (props) => {
@@ -15,6 +16,8 @@ const Login = (props) => {
   });
 
   const navigate = useNavigate();
+
+  const storeTokenInLS = useAuth();
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -37,6 +40,10 @@ const Login = (props) => {
 
       if (response.ok) {
         alert("Valid Credential");
+        console.log(response);
+        const res_data = await response.json();
+        //stored token in localHost
+        storeTokenInLS(res_data.token);
         setUser({
           email: "",
           password: "",
