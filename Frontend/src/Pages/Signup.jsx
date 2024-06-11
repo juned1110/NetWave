@@ -18,10 +18,9 @@ function Signup(props) {
   });
 
   const navigate = useNavigate();
-
   const { storeTokenInLS } = useAuth();
 
-  //Handling Input Values
+  // Handling Input Values
   const handleInput = (e) => {
     let name = e.target.name;
     let value = e.target.value;
@@ -32,10 +31,10 @@ function Signup(props) {
     });
   };
 
-  //handling form submission//
+  // Handling form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(user);
+    console.log("Submitting user:", user);
     try {
       const response = await fetch(URL, {
         method: "POST",
@@ -47,8 +46,8 @@ function Signup(props) {
 
       if (response.ok) {
         const res_data = await response.json();
-        console.log("response from server", res_data);
-        //stored token in localHost
+        console.log("Response from server:", res_data);
+        // Store token in localStorage
         storeTokenInLS(res_data.token);
         setUser({
           firstname: "",
@@ -58,16 +57,20 @@ function Signup(props) {
           password: "",
         });
         setShowModal(true);
+      } else {
+        // Handle non-OK responses
+        const errorData = await response.json();
+        console.error("Error response data:", errorData);
+        alert(`Error: ${errorData.message || "Something went wrong"}`);
       }
-      console.log(response);
     } catch (error) {
-      console.log("Signup Error", error);
+      console.error("Signup Error:", error);
     }
   };
+
   return (
     <>
       <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
-      {/* {props.openModal ? ( */}
       <div className="min-w-screen min-h-screen bg-black bg-opacity-50 backdrop-filter backdrop-blur-lg flex items-center justify-center px-5 py-5 z-auto">
         <div
           className="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden"
@@ -233,7 +236,6 @@ function Signup(props) {
                         type="submit"
                         style={{ fontFamily: "Play" }}
                         className="w-full focus:outline-none font-medium rounded-lg text-sm py-2.5 text-center text-[#03e9f4] text-[20px] border-2 border-[#03e9f4] hover:text-black hover:bg-[#03e9f4] my-4"
-                        // onClick={props.handleClose}
                       >
                         Sign Up
                       </button>
@@ -245,7 +247,6 @@ function Signup(props) {
           </div>
         </div>
       </div>
-      {/* ) : null} */}
 
       {showModal && (
         <Login

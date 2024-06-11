@@ -9,6 +9,7 @@ import Layout from "./Layout.jsx";
 import Signup from "./Pages/Signup.jsx";
 import Error from "./Pages/Error.jsx";
 import { AuthProvider } from "./store/auth.jsx";
+import Logout from "./Pages/Logout.jsx";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
     ],
   },
   { path: "Signup", element: <Signup /> },
+  { path: "Logout", element: <Logout /> },
   { path: "*", element: <Error /> },
 ]);
 

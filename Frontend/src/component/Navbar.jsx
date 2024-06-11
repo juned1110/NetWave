@@ -2,24 +2,27 @@ import React, { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import img from "../assets/logo.png";
 import Login from "../Pages/Login";
-import HeroSection from "./HeroSection";
-import Client from "./Client";
-import Router from "./Router";
-import Adv from "./Adv";
-import Promo from "./Promo";
-import Services from "./Services";
-import Experience from "./Experience";
-import Fiber from "./Fiber";
-import Feature from "./Feature";
-import Support from "./Support";
-import Contactus from "./Contactus";
+import HeroSection from "../component/HeroSection";
+import Client from "../component/Client";
+import Router from "../component/Router";
+import Adv from "../component/Adv";
+import Promo from "../component/Promo";
+import Services from "../component/Services";
+import Experience from "../component/Experience";
+import Fiber from "../component/Fiber";
+import Feature from "../component/Feature";
+import Support from "../component/Support";
+import Contactus from "../component/Contactus";
 import GoogleFontLoader from "react-google-font-loader";
+import { useAuth } from "../store/auth";
 
 const Navbar = () => {
   const [showModal, setShowModal] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [isHomeActive, setIsHomeActive] = useState(false);
   const [isServiceActive, setIsServiceActive] = useState(false);
+
+  const { isLoggedIn, logout } = useAuth();
 
   const location = useLocation();
 
@@ -37,8 +40,30 @@ const Navbar = () => {
 
   useEffect(() => {
     setIsHomeActive(location.pathname === "/");
-    setIsServiceActive(location.pathname === "/");
+    setIsServiceActive(location.pathname === "/Services");
   }, [location.pathname]);
+
+  const buttonStyles = {
+    "--glow-color": "#03e9f4",
+    "--glow-spread-color": "#03e9f4",
+    "--enhanced-glow-color": "#03e9f4",
+    "--btn-color": "rgba(241, 241, 241, 0.1)",
+    border: ".25em solid var(--glow-color)",
+    padding: "1em 3em",
+    color: isHovered ? "#000000" : "var(--glow-color)",
+    fontSize: "15px",
+    fontWeight: "bold",
+    backgroundColor: isHovered ? "#f1f1f1" : "var(--btn-color)",
+    borderRadius: "1em",
+    outline: "none",
+    boxShadow: isHovered
+      ? "0 0 1em .10em var(--glow-color), 0 0 4em 2em rgba(3, 133, 144, 0.181), inset 0 0 .75em .25em var(--glow-color)"
+      : "0 0 1em .15em var(--glow-color), 0 0 1em -5em var(--glow-spread-color), inset 0 0 .95em .1em var(--glow-color)",
+    textShadow: "0 0 .5em var(--glow-color)",
+    position: "relative",
+    transition: "all 0.3s",
+    zIndex: showModal ? "9999" : "auto",
+  };
 
   return (
     <>
@@ -48,7 +73,7 @@ const Navbar = () => {
       />
       <div className="bg-zinc-900 rounded-full sticky top-0 shadow-xl shadow-[#504848] mb-[2px] z-10">
         <nav className="flex items-center justify-between px-12">
-          <div className="">
+          <div>
             <NavLink to="/">
               <img src={img} alt="logo" className="w-auto h-20" />
             </NavLink>
@@ -74,36 +99,32 @@ const Navbar = () => {
                 Contact us
               </NavLink>
             </li>
+            {isLoggedIn ? (
+              <li className="ml-8 text-xl my-7 mr-5 text-white duration-500 hover:text-[#03e9f4] cursor-pointer">
+                <button
+                  style={buttonStyles}
+                  onMouseEnter={handleHover}
+                  onMouseLeave={handleMouseLeave}
+                  onClick={logout}
+                >
+                  <div style={{ fontFamily: "Signika Negative " }}>Logout</div>
+                </button>
+              </li>
+            ) : (
+              <li className="ml-8 text-xl my-7 mr-5 text-white duration-500 hover:text-[#03e9f4] cursor-pointer">
+                <button
+                  style={buttonStyles}
+                  onMouseEnter={handleHover}
+                  onMouseLeave={handleMouseLeave}
+                  onClick={() => setShowModal(!showModal)}
+                >
+                  <div style={{ fontFamily: "Signika Negative " }}>
+                    Get started
+                  </div>
+                </button>
+              </li>
+            )}
           </ul>
-          <button
-            className="button-40"
-            onClick={() => setShowModal(!showModal)}
-            onMouseEnter={handleHover}
-            onMouseLeave={handleMouseLeave}
-            style={{
-              "--glow-color": "#03e9f4",
-              "--glow-spread-color": "#03e9f4",
-              "--enhanced-glow-color": "#03e9f4",
-              "--btn-color": "rgba(241, 241, 241, 0.1)",
-              border: ".25em solid var(--glow-color)",
-              padding: "1em 3em",
-              color: isHovered ? "#000000" : "var(--glow-color)",
-              fontSize: "15px",
-              fontWeight: "bold",
-              backgroundColor: isHovered ? "#f1f1f1" : "var(--btn-color)",
-              borderRadius: "1em",
-              outline: "none",
-              boxShadow: isHovered
-                ? "0 0 1em .10em var(--glow-color), 0 0 4em 2em rgba(3, 133, 144, 0.181), inset 0 0 .75em .25em var(--glow-color)"
-                : "0 0 1em .15em var(--glow-color), 0 0 1em -5em var(--glow-spread-color), inset 0 0 .95em .1em var(--glow-color)",
-              textShadow: "0 0 .5em var(--glow-color)",
-              position: "relative",
-              transition: "all 0.3s",
-              zIndex: showModal ? "9999" : "auto",
-            }}
-          >
-            <div style={{ fontFamily: "Signika Negative " }}>Get started</div>
-          </button>
         </nav>
       </div>
       {showModal && (
