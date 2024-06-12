@@ -101,14 +101,18 @@ const Navbar = () => {
             </li>
             {isLoggedIn ? (
               <li className="ml-8 text-xl my-7 mr-5 text-white duration-500 hover:text-[#03e9f4] cursor-pointer">
-                <button
-                  style={buttonStyles}
-                  onMouseEnter={handleHover}
-                  onMouseLeave={handleMouseLeave}
-                  onClick={logout}
-                >
-                  <div style={{ fontFamily: "Signika Negative " }}>Logout</div>
-                </button>
+                <NavLink to="logout">
+                  <button
+                    style={buttonStyles}
+                    onMouseEnter={handleHover}
+                    onMouseLeave={handleMouseLeave}
+                    onClick={logout}
+                  >
+                    <div style={{ fontFamily: "Signika Negative " }}>
+                      Logout
+                    </div>
+                  </button>
+                </NavLink>
               </li>
             ) : (
               <li className="ml-8 text-xl my-7 mr-5 text-white duration-500 hover:text-[#03e9f4] cursor-pointer">

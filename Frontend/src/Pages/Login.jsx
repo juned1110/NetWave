@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../store/auth";
 
 const URL = "http://localhost:5000/api/auth/login";
+
 const Login = (props) => {
   const loginImgRef = useRef();
   const [user, setUser] = useState({
@@ -17,7 +18,7 @@ const Login = (props) => {
 
   const navigate = useNavigate();
 
-  const storeTokenInLS = useAuth();
+  const { storeTokenInLS } = useAuth(); // Destructure to get storeTokenInLS from useAuth
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -40,9 +41,8 @@ const Login = (props) => {
 
       if (response.ok) {
         alert("Valid Credential");
-        console.log(response);
         const res_data = await response.json();
-        //stored token in localHost
+        // Store token in localStorage
         storeTokenInLS(res_data.token);
         setUser({
           email: "",

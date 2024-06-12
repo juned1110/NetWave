@@ -1,3 +1,4 @@
+// store/auth.js
 import { createContext, useContext, useState } from "react";
 
 export const AuthContext = createContext();
@@ -13,11 +14,12 @@ export const AuthProvider = ({ children }) => {
 
   const isLoggedIn = !!token; // Declaration of isLoggedIn
 
-  console.log(isLoggedIn); // Log after declaration
+  console.log("isLoggedIn", isLoggedIn); // Log after declaration
 
+  // tackling logout functionality
   const logoutUser = () => {
-    setToken(null);
-    localStorage.removeItem("token");
+    setToken("");
+    return localStorage.removeItem("token");
   };
 
   return (
