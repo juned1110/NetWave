@@ -1,10 +1,9 @@
 import React, { useRef, useState } from "react";
 import img from "../assets/logo.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import GoogleFontLoader from "react-google-font-loader";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { useNavigate } from "react-router-dom";
 import { useAuth } from "../store/auth";
 
 const URL = "http://localhost:5000/api/auth/login";
@@ -17,8 +16,7 @@ const Login = (props) => {
   });
 
   const navigate = useNavigate();
-
-  const { storeTokenInLS } = useAuth(); // Destructure to get storeTokenInLS from useAuth
+  const { storeTokenInLS } = useAuth();
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -42,12 +40,12 @@ const Login = (props) => {
       if (response.ok) {
         alert("Valid Credential");
         const res_data = await response.json();
-        // Store token in localStorage
         storeTokenInLS(res_data.token);
         setUser({
           email: "",
           password: "",
         });
+        props.closeModal(); // Close the modal
         navigate("/");
       } else {
         alert("Invalid Credential");
