@@ -66,9 +66,9 @@ const Navbar = () => {
   };
 
   const redButtonStyles = {
-    "--glow-color": "#FF0000", // Changed to red
-    "--glow-spread-color": "#FF0000", // Changed to red
-    "--enhanced-glow-color": "#FF0000", // Changed to red
+    "--glow-color": "#FF0000",
+    "--glow-spread-color": "#FF0000",
+    "--enhanced-glow-color": "#FF0000",
     "--btn-color": "rgba(241, 241, 241, 0.1)",
     border: ".25em solid var(--glow-color)",
     padding: "1em 3em",
@@ -97,32 +97,32 @@ const Navbar = () => {
         <nav className="flex items-center justify-between px-12">
           <div>
             <NavLink to="/">
-              <img src={img} alt="logo" className="w-auto h-20" />
+              <img src={img} alt="logo" className="w-20 h-20" />
             </NavLink>
           </div>
           <ul className="flex items-center">
-            <li className="ml-8 text-xl my-7 mr-5 text-white duration-500 hover:text-[#03e9f4] cursor-pointer">
+            <li className="ml-8 text-xl my-5 mr-5 text-white duration-500 hover:text-[#03e9f4] cursor-pointer">
               <NavLink style={{ fontFamily: "Play" }} to="/">
                 Home
               </NavLink>
             </li>
-            <li className="ml-8 text-xl my-7 mr-5 text-white duration-500 hover:text-[#03e9f4] cursor-pointer">
+            <li className="ml-8 text-xl my-5 mr-5 text-white duration-500 hover:text-[#03e9f4] cursor-pointer">
               <NavLink style={{ fontFamily: "Play" }} to="Packages">
                 Packages
               </NavLink>
             </li>
-            <li className="ml-8 text-xl my-7 mr-5 text-white duration-500 hover:text-[#03e9f4] cursor-pointer">
+            <li className="ml-8 text-xl my-5 mr-5 text-white duration-500 hover:text-[#03e9f4] cursor-pointer">
               <NavLink style={{ fontFamily: "Play" }} to="Services">
                 Services
               </NavLink>
             </li>
-            <li className="ml-8 text-xl my-7 mr-5 text-white duration-500 hover:text-[#03e9f4] cursor-pointer">
+            <li className="ml-8 text-xl my-5 mr-5 text-white duration-500 hover:text-[#03e9f4] cursor-pointer">
               <NavLink style={{ fontFamily: "Play" }} to="Contactus">
                 Contact us
               </NavLink>
             </li>
             {isLoggedIn ? (
-              <li className="ml-8 text-xl my-7 mr-5 text-white duration-500 hover:text-[#03e9f4] cursor-pointer">
+              <li className="ml-8 text-xl my-5 mr-5 text-white duration-500 hover:text-[#03e9f4] cursor-pointer">
                 <NavLink to="logout">
                   <button
                     style={redButtonStyles}
@@ -137,7 +137,7 @@ const Navbar = () => {
                 </NavLink>
               </li>
             ) : (
-              <li className="ml-8 text-xl my-7 mr-5 text-white duration-500 hover:text-[#03e9f4] cursor-pointer">
+              <li className="ml-8 text-xl my-5 mr-5 text-white duration-500 hover:text-[#03e9f4] cursor-pointer">
                 <button
                   style={blueButtonStyles}
                   onMouseEnter={handleHover}
