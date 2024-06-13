@@ -90,12 +90,12 @@ const HeroSection = () => {
           >
             Plus, up to $600 in deals!*
           </li>
-          <button
+          <li
             className="text-gray-100 font-bold py-4 px-8 rounded inline-flex items-center ml-20 mt-5 bg-[#03E9F4] hover:bg-[#3dc0f3] text-xs transition duration-300 ease-in-out"
             style={{ fontFamily: "Alegreya Sans SC" }}
           >
             <span className="text-[3vh]">SEE PLANS AND DEALS</span>
-          </button>
+          </li>
         </div>
       </div>
     </>

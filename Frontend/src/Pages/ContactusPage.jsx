@@ -17,9 +17,9 @@ const ContactusPage = () => {
 
   if (userData && user) {
     setContact({
-      name: user.name,
+      name: [user.firstname],
       location: "",
-      phone: user.phone,
+      phone: user.mobile,
       email: user.email,
       note: "",
     });

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGlobe,
@@ -9,18 +9,34 @@ import {
   faCloudArrowDown,
 } from "@fortawesome/free-solid-svg-icons";
 import GoogleFontLoader from "react-google-font-loader";
+import { useAuth } from "../store/auth";
 
 const ServicesPage = () => {
+  const { user, isLoggedIn, loading } = useAuth();
+
+  useEffect(() => {
+    console.log("User object:", user);
+    console.log("Is logged in:", isLoggedIn);
+  }, [user, isLoggedIn]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!user) {
+    return <div>User not found</div>;
+  }
+
   return (
     <>
       <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
       <div className="relative w-full h-auto bg-gradient-to-r from-[#ffffff] to-[#ECE9E6]">
-        <div className="absolute mt-5 left-14 w-36 p-1 py-2 rounded-md bg-[#03E9F4] text-center text-black font-bold text-sm ">
+        <div className="absolute mt-5 left-14 w-[11rem] py-4 rounded-md bg-[#03E9F4] text-center text-black font-bold text-sm">
           <div
             className="flex justify-center items-center h-full"
             style={{ fontFamily: "Play" }}
           >
-            WHAT WE OFFER
+            Hello {user.firstname} {user.lastname}
           </div>
         </div>
         <div
@@ -44,10 +60,9 @@ const ServicesPage = () => {
               style={{ color: "#03E9F4" }}
               className="h-10 w-10 ml-32 mt-6 absolute"
             />
-
             <div className="p-6">
               <h5
-                className="mb-2  mt-16 ml-14 text-xl leading-tight text-black font-bold"
+                className="mb-2 mt-16 ml-14 text-xl leading-tight text-black font-bold"
                 style={{ fontFamily: "Play" }}
               >
                 Internet Service
@@ -62,7 +77,6 @@ const ServicesPage = () => {
               <div className="border border-[#03E9F4] h-0.5 w-16 ml-24 mt-5 mb-5"></div>
             </div>
           </div>
-
           <div
             className="card2 relative rounded-lg w-[25vw] h-[65vh] border-2 mx-12 mb-12 mt-48"
             style={{
@@ -75,12 +89,17 @@ const ServicesPage = () => {
               style={{ color: "#03E9F4" }}
               className="h-10 w-10 ml-32 mt-6 absolute"
             />
-
             <div className="p-6">
-              <h5 className="mb-2 mt-16 ml-20 text-xl  leading-tight text-black font-bold" style={{ fontFamily: "Play" }}>
+              <h5
+                className="mb-2 mt-16 ml-20 text-xl leading-tight text-black font-bold"
+                style={{ fontFamily: "Play" }}
+              >
                 Satellite TV
               </h5>
-              <p className="mb-4 ml-13 text-base text-neutral-600" style={{ fontFamily: "Play" }}>
+              <p
+                className="mb-4 ml-13 text-base text-neutral-600"
+                style={{ fontFamily: "Play" }}
+              >
                 Access global channels via orbiting satellites, delivering
                 diverse entertainment to homes worldwide.
               </p>
@@ -99,16 +118,21 @@ const ServicesPage = () => {
               style={{ color: "#03E9F4" }}
               className="h-10 w-10 ml-32 mt-6 absolute"
             />
-
             <div className="p-6">
-              <h5 className="mb-2 mt-16 ml-24 text-xl leading-tight text-black font-bold" style={{ fontFamily: "Play" }}>
+              <h5
+                className="mb-2 mt-16 ml-24 text-xl leading-tight text-black font-bold"
+                style={{ fontFamily: "Play" }}
+              >
                 VOIP
               </h5>
-              <p className="mb-4 ml-7 text-base text-neutral-600" style={{ fontFamily: "Play" }}>
+              <p
+                className="mb-4 ml-7 text-base text-neutral-600"
+                style={{ fontFamily: "Play" }}
+              >
                 Voice Over Internet Protocol, enabling voice communication via
                 internet, cost-effective and versatile.
               </p>
-              <div className="border border-[#03E9F4] h-0.5 w-16  ml-24 mt-5 mb-5"></div>
+              <div className="border border-[#03E9F4] h-0.5 w-16 ml-24 mt-5 mb-5"></div>
             </div>
           </div>
           <div
@@ -123,12 +147,14 @@ const ServicesPage = () => {
               style={{ color: "#03E9F4" }}
               className="h-10 w-10 ml-32 mt-6 absolute"
             />
-
             <div className="p-6">
               <h5 className="mb-2 mt-16 ml-14 text-xl leading-tight text-black font-bold">
                 VPN Services
               </h5>
-              <p className="mb-4 ml-4 text-base text-neutral-600" style={{ fontFamily: "Play" }}>
+              <p
+                className="mb-4 ml-4 text-base text-neutral-600"
+                style={{ fontFamily: "Play" }}
+              >
                 Services safeguard online privacy by encrypting data, masking IP
                 addresses, and ensuring secure browsing.
               </p>
@@ -147,16 +173,21 @@ const ServicesPage = () => {
               style={{ color: "#03E9F4" }}
               className="h-10 w-10 ml-32 mt-6 absolute"
             />
-
             <div className="p-6">
-              <h5 className="mb-2 mt-16 ml-14 text-xl  leading-tight text-black font-bold" style={{ fontFamily: "Play" }}>
+              <h5
+                className="mb-2 mt-16 ml-14 text-xl leading-tight text-black font-bold"
+                style={{ fontFamily: "Play" }}
+              >
                 Movie Streaming
               </h5>
-              <p className="mb-4 ml-6 text-base text-neutral-600" style={{ fontFamily: "Play" }}>
+              <p
+                className="mb-4 ml-6 text-base text-neutral-600"
+                style={{ fontFamily: "Play" }}
+              >
                 Embark on cinematic adventures anytime, anywhere with a vast
                 selection of movies streaming seamlessly
               </p>
-              <div className="border border-[#03E9F4] h-0.5 w-16  ml-24 mt-5 mb-5"></div>
+              <div className="border border-[#03E9F4] h-0.5 w-16 ml-24 mt-5 mb-5"></div>
             </div>
           </div>
           <div
@@ -171,12 +202,17 @@ const ServicesPage = () => {
               style={{ color: "#03E9F4" }}
               className="h-10 w-10 ml-32 mt-6 absolute"
             />
-
             <div className="p-6">
-              <h5 className="mb-2 mt-16 ml-14 text-xl leading-tight text-black font-bold" style={{ fontFamily: "Play" }}>
+              <h5
+                className="mb-2 mt-16 ml-14 text-xl leading-tight text-black font-bold"
+                style={{ fontFamily: "Play" }}
+              >
                 Cloud Storage
               </h5>
-              <p className="mb-4 ml-6 text-base text-neutral-600" style={{ fontFamily: "Play" }}>
+              <p
+                className="mb-4 ml-6 text-base text-neutral-600"
+                style={{ fontFamily: "Play" }}
+              >
                 Securely store, access, and manage files online, facilitating
                 collaboration and data scalability.
               </p>
