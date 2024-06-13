@@ -33,21 +33,25 @@ const PackagesPage = () => {
   ];
 
   if (!user) {
-    return <div>Loading...</div>; // Display loading state while user data is being fetched
+    return (
+      <>
+        <div className="flex justify-center items-center mt-[40vh] text-5xl font-bold ">
+          <div className="h-[30vh] ">Loading...</div>
+        </div>
+      </>
+    );
   }
 
   return (
     <>
       <GoogleFontLoader fonts={[{ font: "Lilita One", weights: [400, 700] }]} />
       <div className="w-full h-screen relative">
-        <li
-          className="text-black font-extrabold py-4 px-8 rounded inline-flex items-center ml-20 mt-5 bg-[#4ae1e9] text-xs transition duration-300 ease-in-out"
-          style={{ fontFamily: "Alegreya Sans SC" }}
+        <div
+          className="ml-16 w-36 p-1 py-4 rounded-md bg-[#03E9F4] text-center text-black font-bold text-sm mt-10"
+          style={{ fontFamily: "Play" }}
         >
-          <span className="text-[4vh]">
-            Hello {user.firstname} {user.lastname}
-          </span>
-        </li>
+          Hello {user.firstname} {user.lastname}
+        </div>
         <div className="w-[80vw] h-[100vh] border-[15px] border-[#03e9f4] absolute left-32 mt-8 rounded-[15vh] ">
           <div
             className="w-full h-screen flex justify-center mt-10"

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import GoogleFontLoader from "react-google-font-loader";
 import { useAuth } from "../store/auth";
 
@@ -13,7 +13,7 @@ const ContactusPage = () => {
 
   const [userData, setUserData] = useState(true);
 
-  const { user } = useAuth();
+  const { user, isLoggedIn, loading } = useAuth();
 
   if (userData && user) {
     setContact({
@@ -42,6 +42,25 @@ const ContactusPage = () => {
     console.log(contact);
   };
 
+  useEffect(() => {
+    console.log("User object:", user);
+    console.log("Is logged in:", isLoggedIn);
+  }, [user, isLoggedIn]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!user) {
+    return (
+      <>
+        <div className="flex justify-center items-center mt-[40vh] text-5xl font-bold ">
+          <div className="h-[30vh] ">Loading...</div>
+        </div>
+      </>
+    );
+  }
+
   return (
     <>
       <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
@@ -54,10 +73,10 @@ const ContactusPage = () => {
           }}
         >
           <div
-            className="ml-16 w-36 p-1 py-2 rounded-md bg-[#03E9F4] text-center text-black font-bold text-sm mt-10"
+            className="ml-16 w-36 py-4 rounded-md bg-[#03E9F4] text-center text-black font-bold text-sm mt-10"
             style={{ fontFamily: "Play" }}
           >
-            HOW IT WORKS
+            Hello {user.firstname} {user.lastname}
           </div>
           <p
             className="ml-16 mt-1 text-3xl text-black font-bold"
