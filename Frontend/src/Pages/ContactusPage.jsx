@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import GoogleFontLoader from "react-google-font-loader";
+import { useAuth } from "../store/auth";
 
 const ContactusPage = () => {
   const [contact, setContact] = useState({
@@ -9,6 +10,22 @@ const ContactusPage = () => {
     email: "",
     note: "",
   });
+
+  const [userData, setUserData] = useState(true);
+
+  const { user } = useAuth();
+
+  if (userData && user) {
+    setContact({
+      name: user.name,
+      location: "",
+      phone: user.phone,
+      email: user.email,
+      note: "",
+    });
+
+    setUserData(false);
+  }
 
   const handleInput = (e) => {
     const name = e.target.name;
