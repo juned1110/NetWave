@@ -20,11 +20,7 @@ import { useAuth } from "../store/auth";
 const Navbar = () => {
   const [showModal, setShowModal] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  const [isHomeActive, setIsHomeActive] = useState(false);
-  const [isServiceActive, setIsServiceActive] = useState(false);
-
   const { isLoggedIn, logout } = useAuth();
-
   const location = useLocation();
 
   const closeModal = () => {
@@ -38,11 +34,6 @@ const Navbar = () => {
   const handleMouseLeave = () => {
     setIsHovered(false);
   };
-
-  useEffect(() => {
-    setIsHomeActive(location.pathname === "/");
-    setIsServiceActive(location.pathname === "/Services");
-  }, [location.pathname]);
 
   const blueButtonStyles = {
     "--glow-color": "#03e9f4",
@@ -80,30 +71,62 @@ const Navbar = () => {
             </NavLink>
           </div>
           <ul className="flex items-center">
-            <li className="ml-8 text-xl my-5 mr-5 text-white duration-500 hover:text-[#03e9f4] cursor-pointer">
-              <NavLink style={{ fontFamily: "Play" }} to="/">
+            <li className="ml-8 text-xl my-5 mr-5 duration-500 cursor-pointer">
+              <NavLink
+                style={{ fontFamily: "Play" }}
+                to="/"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-[#03e9f4]"
+                    : "text-white hover:text-[#03e9f4]"
+                }
+              >
                 Home
               </NavLink>
             </li>
-            <li className="ml-8 text-xl my-5 mr-5 text-white duration-500 hover:text-[#03e9f4] cursor-pointer">
-              <NavLink style={{ fontFamily: "Play" }} to="Packages">
+            <li className="ml-8 text-xl my-5 mr-5 duration-500 cursor-pointer">
+              <NavLink
+                style={{ fontFamily: "Play" }}
+                to="/Packages"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-[#03e9f4]"
+                    : "text-white hover:text-[#03e9f4]"
+                }
+              >
                 Packages
               </NavLink>
             </li>
-            <li className="ml-8 text-xl my-5 mr-5 text-white duration-500 hover:text-[#03e9f4] cursor-pointer">
-              <NavLink style={{ fontFamily: "Play" }} to="Services">
+            <li className="ml-8 text-xl my-5 mr-5 duration-500 cursor-pointer">
+              <NavLink
+                style={{ fontFamily: "Play" }}
+                to="/Services"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-[#03e9f4]"
+                    : "text-white hover:text-[#03e9f4]"
+                }
+              >
                 Services
               </NavLink>
             </li>
-            <li className="ml-8 text-xl my-5 mr-5 text-white duration-500 hover:text-[#03e9f4] cursor-pointer">
-              <NavLink style={{ fontFamily: "Play" }} to="Contactus">
+            <li className="ml-8 text-xl my-5 mr-5 duration-500 cursor-pointer">
+              <NavLink
+                style={{ fontFamily: "Play" }}
+                to="/Contactus"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-[#03e9f4]"
+                    : "text-white hover:text-[#03e9f4]"
+                }
+              >
                 Contact us
               </NavLink>
             </li>
             {isLoggedIn ? (
               <button
-                className="ml-8 text-xl my-5 mr-10 cursor-pointer rounded-full px-6 py-2 bg-[#F4F4F4] text-[#676262] hover:text-[#FB0300] "
-                style={{ fontFamily: "Signika Negative " }}
+                className="ml-8 text-xl my-5 mr-10 cursor-pointer rounded-full px-6 py-2 bg-[#F4F4F4] text-[#676262] hover:text-[#FB0300]"
+                style={{ fontFamily: "Signika Negative" }}
               >
                 <NavLink to="logout">
                   <button
@@ -113,19 +136,19 @@ const Navbar = () => {
                     className="flex flex-row-reverse"
                   >
                     Logout
-                    <img src={img1} className=" w-7 mr-1" />
+                    <img src={img1} className="w-7 mr-1" />
                   </button>
                 </NavLink>
               </button>
             ) : (
-              <li className="ml-8 text-xl my-5 mr-5 text-white duration-500 hover:text-[#03e9f4] cursor-pointer">
+              <li className="ml-8 text-xl my-5 mr-5 duration-500 cursor-pointer">
                 <button
                   style={blueButtonStyles}
                   onMouseEnter={handleHover}
                   onMouseLeave={handleMouseLeave}
                   onClick={() => setShowModal(!showModal)}
                 >
-                  <div style={{ fontFamily: "Signika Negative " }}>
+                  <div style={{ fontFamily: "Signika Negative" }}>
                     Get started
                   </div>
                 </button>
@@ -141,17 +164,17 @@ const Navbar = () => {
           showHideCrossBtn={true}
         />
       )}
-      {isHomeActive && <HeroSection />}
-      {isHomeActive && <Client />}
-      {isHomeActive && <Router />}
-      {isHomeActive && <Adv />}
-      {isHomeActive && <Promo />}
-      {isHomeActive && <Services />}
-      {isHomeActive && <Experience />}
-      {isHomeActive && <Fiber />}
-      {isHomeActive && <Feature />}
-      {isHomeActive && <Support />}
-      {isHomeActive && <Contactus />}
+      {location.pathname === "/" && <HeroSection />}
+      {location.pathname === "/" && <Client />}
+      {location.pathname === "/" && <Router />}
+      {location.pathname === "/" && <Adv />}
+      {location.pathname === "/" && <Promo />}
+      {location.pathname === "/" && <Services />}
+      {location.pathname === "/" && <Experience />}
+      {location.pathname === "/" && <Fiber />}
+      {location.pathname === "/" && <Feature />}
+      {location.pathname === "/" && <Support />}
+      {location.pathname === "/" && <Contactus />}
     </>
   );
 };
