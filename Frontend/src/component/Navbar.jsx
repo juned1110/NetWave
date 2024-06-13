@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import img from "../assets/logo.png";
+import img1 from "../assets/logout.png";
 import Login from "../Pages/Login";
 import HeroSection from "../component/HeroSection";
 import Client from "../component/Client";
@@ -65,28 +66,6 @@ const Navbar = () => {
     zIndex: showModal ? "9999" : "auto",
   };
 
-  // const redButtonStyles = {
-  //   "--glow-color": "#FF0000",
-  //   "--glow-spread-color": "#FF0000",
-  //   "--enhanced-glow-color": "#FF0000",
-  //   "--btn-color": "rgba(241, 241, 241, 0.1)",
-  //   border: ".25em solid var(--glow-color)",
-  //   padding: "1em 3em",
-  //   color: isHovered ? "#000000" : "var(--glow-color)",
-  //   fontSize: "15px",
-  //   fontWeight: "bold",
-  //   backgroundColor: isHovered ? "#f1f1f1" : "var(--btn-color)",
-  //   borderRadius: "1em",
-  //   outline: "none",
-  //   boxShadow: isHovered
-  //     ? "0 0 1em .10em var(--glow-color), 0 0 4em 2em rgba(255, 0, 0, 0.181), inset 0 0 .75em .25em var(--glow-color)"
-  //     : "0 0 1em .15em var(--glow-color), 0 0 1em -5em var(--glow-spread-color), inset 0 0 .95em .1em var(--glow-color)",
-  //   textShadow: "0 0 .5em var(--glow-color)",
-  //   position: "relative",
-  //   transition: "all 0.3s",
-  //   zIndex: showModal ? "9999" : "auto",
-  // };
-
   return (
     <>
       <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
@@ -122,17 +101,19 @@ const Navbar = () => {
               </NavLink>
             </li>
             {isLoggedIn ? (
-              <button className="ml-8 text-xl my-5 mr-5 text-white duration-500 hover:text-[#03e9f4] cursor-pointer rounded-full px-7 py-2 bg-[#B60000] ">
+              <button
+                className="ml-8 text-xl my-5 mr-10 cursor-pointer rounded-full px-6 py-2 bg-[#F4F4F4] text-[#676262] hover:text-[#FB0300] "
+                style={{ fontFamily: "Signika Negative " }}
+              >
                 <NavLink to="logout">
                   <button
-                    // style={redButtonStyles}
                     onMouseEnter={handleHover}
                     onMouseLeave={handleMouseLeave}
                     onClick={logout}
+                    className="flex flex-row-reverse"
                   >
-                    <div style={{ fontFamily: "Signika Negative " }}>
-                      Logout
-                    </div>
+                    Logout
+                    <img src={img1} className=" w-7 mr-1" />
                   </button>
                 </NavLink>
               </button>
