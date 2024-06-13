@@ -65,27 +65,27 @@ const Navbar = () => {
     zIndex: showModal ? "9999" : "auto",
   };
 
-  const redButtonStyles = {
-    "--glow-color": "#FF0000",
-    "--glow-spread-color": "#FF0000",
-    "--enhanced-glow-color": "#FF0000",
-    "--btn-color": "rgba(241, 241, 241, 0.1)",
-    border: ".25em solid var(--glow-color)",
-    padding: "1em 3em",
-    color: isHovered ? "#000000" : "var(--glow-color)",
-    fontSize: "15px",
-    fontWeight: "bold",
-    backgroundColor: isHovered ? "#f1f1f1" : "var(--btn-color)",
-    borderRadius: "1em",
-    outline: "none",
-    boxShadow: isHovered
-      ? "0 0 1em .10em var(--glow-color), 0 0 4em 2em rgba(255, 0, 0, 0.181), inset 0 0 .75em .25em var(--glow-color)"
-      : "0 0 1em .15em var(--glow-color), 0 0 1em -5em var(--glow-spread-color), inset 0 0 .95em .1em var(--glow-color)",
-    textShadow: "0 0 .5em var(--glow-color)",
-    position: "relative",
-    transition: "all 0.3s",
-    zIndex: showModal ? "9999" : "auto",
-  };
+  // const redButtonStyles = {
+  //   "--glow-color": "#FF0000",
+  //   "--glow-spread-color": "#FF0000",
+  //   "--enhanced-glow-color": "#FF0000",
+  //   "--btn-color": "rgba(241, 241, 241, 0.1)",
+  //   border: ".25em solid var(--glow-color)",
+  //   padding: "1em 3em",
+  //   color: isHovered ? "#000000" : "var(--glow-color)",
+  //   fontSize: "15px",
+  //   fontWeight: "bold",
+  //   backgroundColor: isHovered ? "#f1f1f1" : "var(--btn-color)",
+  //   borderRadius: "1em",
+  //   outline: "none",
+  //   boxShadow: isHovered
+  //     ? "0 0 1em .10em var(--glow-color), 0 0 4em 2em rgba(255, 0, 0, 0.181), inset 0 0 .75em .25em var(--glow-color)"
+  //     : "0 0 1em .15em var(--glow-color), 0 0 1em -5em var(--glow-spread-color), inset 0 0 .95em .1em var(--glow-color)",
+  //   textShadow: "0 0 .5em var(--glow-color)",
+  //   position: "relative",
+  //   transition: "all 0.3s",
+  //   zIndex: showModal ? "9999" : "auto",
+  // };
 
   return (
     <>
@@ -122,10 +122,10 @@ const Navbar = () => {
               </NavLink>
             </li>
             {isLoggedIn ? (
-              <li className="ml-8 text-xl my-5 mr-5 text-white duration-500 hover:text-[#03e9f4] cursor-pointer">
+              <button className="ml-8 text-xl my-5 mr-5 text-white duration-500 hover:text-[#03e9f4] cursor-pointer rounded-full px-7 py-2 bg-[#B60000] ">
                 <NavLink to="logout">
                   <button
-                    style={redButtonStyles}
+                    // style={redButtonStyles}
                     onMouseEnter={handleHover}
                     onMouseLeave={handleMouseLeave}
                     onClick={logout}
@@ -135,7 +135,7 @@ const Navbar = () => {
                     </div>
                   </button>
                 </NavLink>
-              </li>
+              </button>
             ) : (
               <li className="ml-8 text-xl my-5 mr-5 text-white duration-500 hover:text-[#03e9f4] cursor-pointer">
                 <button
