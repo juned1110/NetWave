@@ -2,30 +2,31 @@ import React, { useEffect, useState } from "react";
 import GoogleFontLoader from "react-google-font-loader";
 import { useAuth } from "../store/auth";
 
+const defaultContactFormData = {
+  username: "",
+  location: "",
+  phone: "",
+  email: "",
+  message: "",
+};
+
 const ContactusPage = () => {
-  const [contact, setContact] = useState({
-    name: "",
-    location: "",
-    phone: "",
-    email: "",
-    note: "",
-  });
-
+  const [contact, setContact] = useState(defaultContactFormData);
   const [userData, setUserData] = useState(true);
-
   const { user, isLoggedIn, loading } = useAuth();
 
-  if (userData && user) {
-    setContact({
-      name: [user.firstname],
-      location: "",
-      phone: user.mobile,
-      email: user.email,
-      note: "",
-    });
-
-    setUserData(false);
-  }
+  useEffect(() => {
+    if (userData && user) {
+      setContact({
+        username: user.firstname,
+        location: "",
+        phone: user.mobile,
+        email: user.email,
+        message: "",
+      });
+      setUserData(false);
+    }
+  }, [user, userData]);
 
   const handleInput = (e) => {
     const name = e.target.name;
@@ -37,9 +38,32 @@ const ContactusPage = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(contact);
+
+    try {
+      const response = await fetch("http://localhost:5000/api/form/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(contact),
+      });
+
+      if (response.ok) {
+        setContact(defaultContactFormData);
+        const data = await response.json();
+        console.log(data);
+        alert("Message sent successfully");
+      } else {
+        const errorData = await response.json();
+        console.error("Error:", errorData);
+        alert("Message not sent: " + errorData.message);
+      }
+    } catch (error) {
+      alert("Message not sent due to a network error");
+      console.error("Network error:", error);
+    }
   };
 
   useEffect(() => {
@@ -53,11 +77,9 @@ const ContactusPage = () => {
 
   if (!user) {
     return (
-      <>
-        <div className="flex justify-center items-center mt-[40vh] text-5xl font-bold ">
-          <div className="h-[30vh] ">Loading...</div>
-        </div>
-      </>
+      <div className="flex justify-center items-center mt-[40vh] text-5xl font-bold">
+        <div className="h-[30vh]">Loading...</div>
+      </div>
     );
   }
 
@@ -66,7 +88,7 @@ const ContactusPage = () => {
       <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
       <div className="w-full h-[115vh] flex p-28 pt-5 bg-gradient-to-r from-[#ffffff] to-[#ECE9E6]">
         <div
-          className="left h-[110vh] w-1/2 relative rounded-l-3xl"
+          className="left h-[110vh] w-1/2 relative rounded-3xl mt-10"
           style={{
             boxShadow:
               "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px",
@@ -98,10 +120,6 @@ const ContactusPage = () => {
               background: "linear-gradient(90deg, #0061FF 0%, #60EFFF 100%)",
               backgroundImage:
                 "-moz-linear-gradient(90deg, #0061FF 0%, #60EFFF 100%)",
-              backgroundImage:
-                "-webkit-linear-gradient(90deg, #0061FF 0%, #60EFFF 100%)",
-              backgroundImage:
-                "linear-gradient(90deg, #0061FF 0%, #60EFFF 100%)",
               filter:
                 "progid:DXImageTransform.Microsoft.gradient( startColorstr='#0061FF', endColorstr='#60EFFF',GradientType=1)",
             }}
@@ -134,10 +152,6 @@ const ContactusPage = () => {
               background: "linear-gradient(90deg, #0061FF 0%, #60EFFF 100%)",
               backgroundImage:
                 "-moz-linear-gradient(90deg, #0061FF 0%, #60EFFF 100%)",
-              backgroundImage:
-                "-webkit-linear-gradient(90deg, #0061FF 0%, #60EFFF 100%)",
-              backgroundImage:
-                "linear-gradient(90deg, #0061FF 0%, #60EFFF 100%)",
               filter:
                 "progid:DXImageTransform.Microsoft.gradient( startColorstr='#0061FF', endColorstr='#60EFFF',GradientType=1)",
             }}
@@ -170,10 +184,6 @@ const ContactusPage = () => {
               background: "linear-gradient(90deg, #0061FF 0%, #60EFFF 100%)",
               backgroundImage:
                 "-moz-linear-gradient(90deg, #0061FF 0%, #60EFFF 100%)",
-              backgroundImage:
-                "-webkit-linear-gradient(90deg, #0061FF 0%, #60EFFF 100%)",
-              backgroundImage:
-                "linear-gradient(90deg, #0061FF 0%, #60EFFF 100%)",
               filter:
                 "progid:DXImageTransform.Microsoft.gradient( startColorstr='#0061FF', endColorstr='#60EFFF',GradientType=1)",
             }}
@@ -201,148 +211,101 @@ const ContactusPage = () => {
               background: "linear-gradient(90deg, #0061FF 0%, #60EFFF 100%)",
               backgroundImage:
                 "-moz-linear-gradient(90deg, #0061FF 0%, #60EFFF 100%)",
-              backgroundImage:
-                "-webkit-linear-gradient(90deg, #0061FF 0%, #60EFFF 100%)",
-              backgroundImage:
-                "linear-gradient(90deg, #0061FF 0%, #60EFFF 100%)",
               filter:
                 "progid:DXImageTransform.Microsoft.gradient( startColorstr='#0061FF', endColorstr='#60EFFF',GradientType=1)",
             }}
           >
-            <span
-              className="text-white font-bold text-4xl relative"
-              style={{ fontFamily: "Play" }}
-            >
-              4
-            </span>
+            <span className="text-white font-bold text-4xl relative">4</span>
           </div>
           <span
             className="absolute left-44 top-[89vh] font-bold"
             style={{ fontFamily: "Play" }}
           >
-            Installation
+            Connect with World
           </span>
-          <div className="h-0.5 w-1/2 ml-20 mt-3 bg-[#03E9F4]"></div>
         </div>
-        <div
-          className="right h-[110vh] w-1/2 rounded-r-3xl mr-14 bg-[#F2F2F2] flex justify-center items-center relative"
-          style={{
-            boxShadow:
-              "rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset",
-          }}
-        >
-          <div
-            className="absolute top-5 right-42 text-3xl font-bold"
-            style={{ fontFamily: "Play" }}
-          >
-            Get Free a Quote.
-          </div>
-          <form onSubmit={handleSubmit} className="w-full max-w-md">
-            <div className="mb-4 mt-10 flex justify-between">
-              <div className="w-1/2 mr-2">
-                <label
-                  className="block text-gray-700 text-sm font-bold mb-2"
-                  htmlFor="name"
-                  style={{ fontFamily: "Play" }}
-                >
-                  Name
-                </label>
+
+        {/* Contact Form */}
+        <div className="right h-[110vh] w-1/2 rounded-r-3xl relative">
+          <form onSubmit={handleSubmit}>
+            <div className="ml-12 mt-24 text-black font-bold">
+              <h1 className="text-3xl mb-2 " style={{ fontFamily: "Play" }}>
+                Contact Us
+              </h1>
+              <p
+                className="text-sm text-[#03E9F4] mb-4"
+                style={{ fontFamily: "Play" }}
+              >
+                Please fill in the form below to get in touch with us.
+              </p>
+
+              <label className="block mb-2" style={{ fontFamily: "Play" }}>
+                Username
                 <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="name"
-                  name="name"
+                  className="block w-3/4 mt-1 p-2 border border-gray-300 rounded-md"
                   type="text"
-                  value={contact.name}
+                  name="username"
+                  value={contact.username}
                   onChange={handleInput}
-                  placeholder="Name"
-                  style={{ fontFamily: "Play" }}
+                  required
                 />
-              </div>
-              <div className="w-1/2 ml-2">
-                <label
-                  className="block text-gray-700 text-sm font-bold mb-2"
-                  htmlFor="location"
-                  style={{ fontFamily: "Play" }}
-                >
-                  Location
-                </label>
+              </label>
+
+              <label className="block mb-2" style={{ fontFamily: "Play" }}>
+                Location
                 <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="location"
-                  name="location"
+                  className="block w-3/4 mt-1 p-2 border border-gray-300 rounded-md"
                   type="text"
+                  name="location"
                   value={contact.location}
                   onChange={handleInput}
-                  placeholder="Location"
-                  style={{ fontFamily: "Play" }}
+                  required
                 />
-              </div>
-            </div>
-            <div className="mb-4">
-              <label
-                className="block text-gray-700 text-sm font-bold mb-2"
-                htmlFor="phone"
-                style={{ fontFamily: "Play" }}
-              >
+              </label>
+
+              <label className="block mb-2" style={{ fontFamily: "Play" }}>
                 Phone
+                <input
+                  className="block w-3/4 mt-1 p-2 border border-gray-300 rounded-md"
+                  type="tel"
+                  name="phone"
+                  value={contact.phone}
+                  onChange={handleInput}
+                  required
+                />
               </label>
-              <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="phone"
-                name="phone"
-                type="text"
-                value={contact.phone}
-                onChange={handleInput}
-                placeholder="Phone"
-                style={{ fontFamily: "Play" }}
-              />
-            </div>
-            <div className="mb-4">
-              <label
-                className="block text-gray-700 text-sm font-bold mb-2"
-                htmlFor="email"
-                style={{ fontFamily: "Play" }}
-              >
+
+              <label className="block mb-2" style={{ fontFamily: "Play" }}>
                 Email
+                <input
+                  className="block w-3/4 mt-1 p-2 border border-gray-300 rounded-md"
+                  type="email"
+                  name="email"
+                  value={contact.email}
+                  onChange={handleInput}
+                  required
+                />
               </label>
-              <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="email"
-                name="email"
-                type="email"
-                value={contact.email}
-                onChange={handleInput}
-                placeholder="Email"
-                style={{ fontFamily: "Play" }}
-              />
-            </div>
-            <div className="mb-4">
-              <label
-                className="block text-gray-700 text-sm font-bold mb-2"
-                htmlFor="note"
+
+              <label className="block mb-2" style={{ fontFamily: "Play" }}>
+                Message
+                <textarea
+                  className="block w-3/4 mt-1 p-2 border border-gray-300 rounded-md"
+                  name="message"
+                  value={contact.message}
+                  onChange={handleInput}
+                  required
+                />
+              </label>
+
+              <button
+                type="submit"
+                className="block w-3/4 mt-4 py-2 bg-[#03E9F4] text-black font-bold rounded-md"
                 style={{ fontFamily: "Play" }}
               >
-                Note
-              </label>
-              <textarea
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="note"
-                name="note"
-                type="text"
-                value={contact.note}
-                onChange={handleInput}
-                placeholder="Note"
-                rows="4"
-                style={{ fontFamily: "Play" }}
-              ></textarea>
+                Send Message
+              </button>
             </div>
-            <button
-              className="w-full bg-[#03E9F4] hover:bg-[#45d8e2] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="submit"
-              style={{ fontFamily: "Play" }}
-            >
-              Submit
-            </button>
           </form>
         </div>
       </div>
