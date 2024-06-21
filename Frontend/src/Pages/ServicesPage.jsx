@@ -1,49 +1,47 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faGlobe,
-  faTv,
-  faTowerCell,
-  faEthernet,
-  faClapperboard,
-  faCloudArrowDown,
-} from "@fortawesome/free-solid-svg-icons";
 import GoogleFontLoader from "react-google-font-loader";
 import { useAuth } from "../store/auth";
+import img1 from "../assets/card1.png";
+import img2 from "../assets/card2.png";
+import img3 from "../assets/card3.png";
+import img4 from "../assets/card4.png";
+import img5 from "../assets/card5.png";
+import img6 from "../assets/card6.png";
 
 const services = [
   {
-    icon: faGlobe,
+    img: img1,
     title: "Internet Service",
     description:
       "A digital gateway connecting global communities, fostering innovation, & empowering limitless exploration.",
   },
   {
-    icon: faTv,
+    img: img2,
     title: "Satellite TV",
     description:
       "Access global channels via orbiting satellites, delivering diverse entertainment to homes worldwide.",
   },
   {
-    icon: faTowerCell,
+    img: img3,
     title: "VOIP",
     description:
       "Voice Over Internet Protocol, enabling voice communication via internet, cost-effective and versatile.",
   },
   {
-    icon: faEthernet,
+    img: img4,
     title: "VPN Services",
     description:
       "Services safeguard online privacy by encrypting data, masking IP addresses, and ensuring secure browsing.",
   },
   {
-    icon: faClapperboard,
+    img: img5,
     title: "Movie Streaming",
     description:
       "Embark on cinematic adventures anytime, anywhere with a vast selection of movies streaming seamlessly.",
   },
   {
-    icon: faCloudArrowDown,
+    img: img6,
     title: "Cloud Storage",
     description:
       "Securely store, access, and manage files online, facilitating collaboration and data scalability.",
@@ -52,11 +50,20 @@ const services = [
 
 const ServicesPage = () => {
   const { user, isLoggedIn, loading } = useAuth();
+  const [loadingImages, setLoadingImages] = useState(true);
 
   useEffect(() => {
     console.log("User object:", user);
     console.log("Is logged in:", isLoggedIn);
   }, [user, isLoggedIn]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoadingImages(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -100,11 +107,15 @@ const ServicesPage = () => {
                   "rgba(0, 0, 0, 0.17) 0px -2px 2px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -7px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 1px 2px, rgba(0, 0, 0, 0.09) 0px 2px 4px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 10px 10px",
               }}
             >
-              <FontAwesomeIcon
-                icon={service.icon}
-                style={{ color: "#03E9F4" }}
-                className="h-10 w-10 mb-6"
-              />
+              {loadingImages ? (
+                <div className="mb-6 h-24 w-24 bg-gray-300 animate-pulse"></div>
+              ) : (
+                <img
+                  src={service.img}
+                  className="mb-6 h-24 w-24 object-contain rounded-xl"
+                />
+              )}
+              
               <div className="p-6 text-center">
                 <h5
                   className="mb-2 text-xl leading-tight text-black font-bold"
