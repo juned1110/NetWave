@@ -45,7 +45,7 @@ const Login = (props) => {
           email: "",
           password: "",
         });
-        props.closeModal(); // Close the modal
+        props.closeModal();
         navigate("/");
       } else {
         alert("Invalid Credential");

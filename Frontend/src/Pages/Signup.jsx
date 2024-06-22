@@ -44,9 +44,10 @@ function Signup(props) {
         body: JSON.stringify(user),
       });
 
+      const res_data = await response.json();
+      console.log("Response from server:", res_data.extraDetailes);
+
       if (response.ok) {
-        const res_data = await response.json();
-        console.log("Response from server:", res_data);
         // Store token in localStorage
         storeTokenInLS(res_data.token);
         setUser({
@@ -59,9 +60,7 @@ function Signup(props) {
         setShowModal(true);
       } else {
         // Handle non-OK responses
-        const errorData = await response.json();
-        console.error("Error response data:", errorData);
-        alert(`Error: ${errorData.message || "Something went wrong"}`);
+        alert(res_data.extraDetailes || "An error occurred");
       }
     } catch (error) {
       console.error("Signup Error:", error);
