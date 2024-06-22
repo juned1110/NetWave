@@ -4,6 +4,7 @@ import GoogleFontLoader from "react-google-font-loader";
 import { useNavigate } from "react-router-dom";
 import Login from "../Pages/Login";
 import { useAuth } from "../store/auth";
+import { toast } from "react-toastify";
 
 const URL = "http://localhost:5000/api/auth/register";
 
@@ -57,10 +58,11 @@ function Signup(props) {
           email: "",
           password: "",
         });
+        toast.success("Registration Succesfull");
         setShowModal(true);
       } else {
         // Handle non-OK responses
-        alert(res_data.extraDetailes || "An error occurred");
+        toast.error(res_data.extraDetailes || "An error occurred");
       }
     } catch (error) {
       console.error("Signup Error:", error);

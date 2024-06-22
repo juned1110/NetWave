@@ -39,7 +39,6 @@ const Login = (props) => {
       });
 
       if (response.ok) {
-        alert("Valid Credential");
         const res_data = await response.json();
         storeTokenInLS(res_data.token);
         setUser({
@@ -47,6 +46,7 @@ const Login = (props) => {
           password: "",
         });
         props.closeModal();
+        toast.success("Login Succesfull");
         navigate("/");
       } else {
         toast.error("Invalid Credential");
