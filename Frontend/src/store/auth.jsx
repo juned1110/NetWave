@@ -41,7 +41,11 @@ export const AuthProvider = ({ children }) => {
         console.log("User data:", data.userData);
         setUser(data.userData);
       } else {
-        console.error("Failed to fetch user data");
+        console.error(
+          "Failed to fetch user data",
+          response.status,
+          response.statusText
+        );
       }
     } catch (error) {
       console.error("Error while fetching user data", error);
@@ -60,6 +64,12 @@ export const AuthProvider = ({ children }) => {
         const data = await response.json();
         console.log(data.msg);
         setServices(data.msg);
+      } else {
+        console.error(
+          "Failed to fetch services data",
+          response.status,
+          response.statusText
+        );
       }
     } catch (error) {
       console.log(`services frontend error: ${error}`);
