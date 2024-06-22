@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import GoogleFontLoader from "react-google-font-loader";
 import { useAuth } from "../store/auth";
+import { toast } from "react-toastify";
 
 const defaultContactFormData = {
   username: "",
@@ -13,7 +14,7 @@ const defaultContactFormData = {
 const ContactusPage = () => {
   const [contact, setContact] = useState(defaultContactFormData);
   const [userData, setUserData] = useState(true);
-  const { user, isLoggedIn, loading } = useAuth();
+  const { user, isLoggedIn } = useAuth();
 
   useEffect(() => {
     if (userData && user) {
@@ -53,16 +54,13 @@ const ContactusPage = () => {
       if (response.ok) {
         setContact(defaultContactFormData);
         const data = await response.json();
-        console.log(data);
-        alert("Message sent successfully");
+        toast.success("Message sent successfully");
       } else {
         const errorData = await response.json();
-        console.error("Error:", errorData);
-        alert("Message not sent: " + errorData.message);
+        toast.error("Message not sent: " + errorData.message);
       }
     } catch (error) {
-      alert("Message not sent due to a network error");
-      console.error("Network error:", error);
+      toast.error("Message not sent due to a network error", error);
     }
   };
 
@@ -70,10 +68,6 @@ const ContactusPage = () => {
     console.log("User object:", user);
     console.log("Is logged in:", isLoggedIn);
   }, [user, isLoggedIn]);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
 
   if (!user) {
     return (
