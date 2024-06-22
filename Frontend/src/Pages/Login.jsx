@@ -5,6 +5,7 @@ import GoogleFontLoader from "react-google-font-loader";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useAuth } from "../store/auth";
+import { toast } from "react-toastify";
 
 const URL = "http://localhost:5000/api/auth/login";
 
@@ -48,8 +49,7 @@ const Login = (props) => {
         props.closeModal();
         navigate("/");
       } else {
-        alert("Invalid Credential");
-        console.log("Invalid Credential");
+        toast.error("Invalid Credential");
       }
     } catch (error) {
       console.log(error);
