@@ -12,6 +12,9 @@ import { AuthProvider } from "./store/auth.jsx";
 import Logout from "./Pages/Logout.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import AdminLayout from "./component/layouts/AdminLayout.jsx";
+import AdminUsers from "./Pages/AdminUsers.jsx";
+import AdminContacts from "./Pages/AdminContacts.jsx";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +24,14 @@ const router = createBrowserRouter([
       { path: "Packages", element: <PackagesPage /> },
       { path: "Services", element: <ServicesPage /> },
       { path: "Contactus", element: <ContactusPage /> },
+      {
+        path: "admin",
+        element: <AdminLayout />,
+        children: [
+          { path: "users", element: <AdminUsers /> },
+          { path: "contacts", element: <AdminContacts /> },
+        ],
+      },
     ],
   },
   { path: "Signup", element: <Signup /> },
