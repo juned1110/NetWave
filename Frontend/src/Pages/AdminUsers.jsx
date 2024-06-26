@@ -39,23 +39,27 @@ const AdminUsers = () => {
     }
   };
 
-  //delete user on delete button
   const deleteUser = async (id) => {
-    const response = await fetch(
-      `http://localhost:5000/api/admin/users/delete/${id}`,
-      {
-        method: "DELETE",
-        headers: {
-          Authorization: AuthorizationToken,
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    const data = await response.json();
-    console.log("users after delete", data);
+    try {
+      const response = await fetch(
+        `http://localhost:5000/api/admin/users/delete/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: AuthorizationToken,
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
-    if (response.ok) {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
       getAllUsersData();
+    } catch (error) {
+      console.error("Error deleting user:", error);
+      setError(error.message);
     }
   };
 
@@ -63,12 +67,10 @@ const AdminUsers = () => {
     getAllUsersData();
   }, []);
 
-  // Get current users
   const indexOfLastUser = currentPage * usersPerPage;
   const indexOfFirstUser = indexOfLastUser - usersPerPage;
   const currentUsers = users.slice(indexOfFirstUser, indexOfLastUser);
 
-  // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
@@ -105,11 +107,11 @@ const AdminUsers = () => {
                       <td className="py-3 px-6">{curUser.mobile}</td>
                       <td className="py-3 px-6">{curUser.email}</td>
                       <td className="py-3 px-6">
-                        <button className="bg-blue-500 text-white py-1 px-3 rounded-lg hover:bg-blue-700 transition duration-300">
-                          <Link to={`/admin/users/${curUser._id}/edit`}>
+                        <Link to={`/admin/users/${curUser._id}/edit`}>
+                          <button className="bg-blue-500 text-white py-1 px-3 rounded-lg hover:bg-blue-700 transition duration-300">
                             Edit
-                          </Link>
-                        </button>
+                          </button>
+                        </Link>
                       </td>
                       <td className="py-3 px-6">
                         <button

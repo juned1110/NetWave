@@ -15,6 +15,7 @@ import "react-toastify/dist/ReactToastify.css";
 import AdminLayout from "./component/layouts/AdminLayout.jsx";
 import AdminUsers from "./Pages/AdminUsers.jsx";
 import AdminContacts from "./Pages/AdminContacts.jsx";
+import AdminUpdate from "./Pages/AdminUpdate.jsx";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
         element: <AdminLayout />,
         children: [
           { path: "users", element: <AdminUsers /> },
+          { path: "users/:id/edit", element: <AdminUpdate /> },
           { path: "contacts", element: <AdminContacts /> },
         ],
       },
@@ -59,5 +61,3 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     </React.StrictMode>
   </AuthProvider>
 );
-
-///main///
