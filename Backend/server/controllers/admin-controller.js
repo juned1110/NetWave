@@ -15,6 +15,17 @@ const getAllUsers = async (req, res) => {
   }
 };
 
+//User delete logic from admin
+const delteUserById = async (req, res) => {
+  try {
+    const id = req.params.id;
+    await User.deleteOne({ _id: id });
+    return res.status(200).json({ message: "User Deleted Succefully" });
+  } catch (error) {
+    next(error);
+  }
+};
+
 //getting all contacts logic
 const getAllContacts = async (req, res) => {
   try {
@@ -28,4 +39,4 @@ const getAllContacts = async (req, res) => {
   }
 };
 
-module.exports = { getAllUsers, getAllContacts };
+module.exports = { getAllUsers, getAllContacts, delteUserById };
