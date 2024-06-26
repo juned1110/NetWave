@@ -42,44 +42,56 @@ const AdminUsers = () => {
 
   return (
     <>
-      {error && <div>Error: {error}</div>}
-      <section>
-        <div className="w-full h-[15vh]">
-          <h1 className="text-6xl text-center font-semibold">
+      {error && <div className="text-red-500 text-center">{error}</div>}
+      <section className="bg-gray-100 py-10 mt-0 h-screen">
+        <div className="w-full h-[15vh] flex justify-center items-center mb-6">
+          <h1 className="text-6xl text-center font-semibold text-gray-800">
             Admin User Data
           </h1>
         </div>
-        <div className="container">
-          <table>
-            <thead>
-              <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Mobile</th>
-                <th>Email</th>
-                <th>Update</th>
-                <th>Delete</th>
-              </tr>
-            </thead>
-            <tbody>
-              {users.length > 0 ? (
-                users.map((curUser, index) => {
-                  return (
-                    <tr key={index}>
-                      <td>{curUser.firstname}</td>
-                      <td>{curUser.lastname}</td>
-                      <td>{curUser.mobile}</td>
-                      <td>{curUser.email}</td>
-                      <td>Edit</td>
-                      <td>Delete</td>
+        <div className="container mx-auto">
+          <div className="overflow-x-auto">
+            <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+              <thead className="bg-zinc-600 text-white">
+                <tr>
+                  <th className="py-3 px-4 text-left">Firstname</th>
+                  <th className="py-3 px-4 text-left">Lastname</th>
+                  <th className="py-3 px-4 text-left">Mobile</th>
+                  <th className="py-3 px-4 text-left">Email</th>
+                  <th className="py-3 px-4 text-left">Update</th>
+                  <th className="py-3 px-4 text-left">Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                {users.length > 0 ? (
+                  users.map((curUser, index) => (
+                    <tr key={index} className="border-b hover:bg-gray-50">
+                      <td className="py-3 px-4">{curUser.firstname}</td>
+                      <td className="py-3 px-4">{curUser.lastname}</td>
+                      <td className="py-3 px-4">{curUser.mobile}</td>
+                      <td className="py-3 px-4">{curUser.email}</td>
+                      <td className="py-3 px-4">
+                        <button className="bg-blue-500 text-white py-1 px-3 rounded-lg hover:bg-blue-600">
+                          Edit
+                        </button>
+                      </td>
+                      <td className="py-3 px-4">
+                        <button className="bg-red-500 text-white py-1 px-3 rounded-lg hover:bg-red-600">
+                          Delete
+                        </button>
+                      </td>
                     </tr>
-                  );
-                })
-              ) : (
-                <div>No users found</div>
-              )}
-            </tbody>
-          </table>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan="6" className="text-center py-3 px-4">
+                      No users found
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
     </>
