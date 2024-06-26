@@ -4,6 +4,8 @@ import { useAuth } from "../store/auth";
 const AdminUsers = () => {
   const [users, setUsers] = useState([]);
   const [error, setError] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const usersPerPage = 3; // Number of users to display per page
 
   const { AuthorizationToken } = useAuth();
 
@@ -40,6 +42,14 @@ const AdminUsers = () => {
     getAllUsersData();
   }, []);
 
+  // Get current users
+  const indexOfLastUser = currentPage * usersPerPage;
+  const indexOfFirstUser = indexOfLastUser - usersPerPage;
+  const currentUsers = users.slice(indexOfFirstUser, indexOfLastUser);
+
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <>
       {error && <div className="text-red-500 text-center">{error}</div>}
@@ -63,8 +73,8 @@ const AdminUsers = () => {
                 </tr>
               </thead>
               <tbody>
-                {users.length > 0 ? (
-                  users.map((curUser, index) => (
+                {currentUsers.length > 0 ? (
+                  currentUsers.map((curUser, index) => (
                     <tr
                       key={index}
                       className="border-b hover:bg-gray-100 transition duration-300"
@@ -94,6 +104,22 @@ const AdminUsers = () => {
                 )}
               </tbody>
             </table>
+            <div className="flex justify-between mt-4">
+              <button
+                onClick={() => paginate(currentPage - 1)}
+                disabled={currentPage === 1}
+                className="px-4 py-2 bg-gray-500 text-white rounded disabled:bg-gray-300"
+              >
+                Previous
+              </button>
+              <button
+                onClick={() => paginate(currentPage + 1)}
+                disabled={indexOfLastUser >= users.length}
+                className="px-4 py-2 bg-gray-500 text-white rounded disabled:bg-gray-300"
+              >
+                Next
+              </button>
+            </div>
           </div>
         </div>
       </section>
