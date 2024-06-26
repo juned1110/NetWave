@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../store/auth";
+import { Link } from "react-router-dom";
 
 const AdminUsers = () => {
   const [users, setUsers] = useState([]);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const usersPerPage = 3; // Number of users to display per page
+  const usersPerPage = 3;
 
   const { AuthorizationToken } = useAuth();
 
@@ -105,7 +106,9 @@ const AdminUsers = () => {
                       <td className="py-3 px-6">{curUser.email}</td>
                       <td className="py-3 px-6">
                         <button className="bg-blue-500 text-white py-1 px-3 rounded-lg hover:bg-blue-700 transition duration-300">
-                          Edit
+                          <Link to={`/admin/users/${curUser._id}/edit`}>
+                            Edit
+                          </Link>
                         </button>
                       </td>
                       <td className="py-3 px-6">

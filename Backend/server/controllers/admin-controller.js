@@ -1,11 +1,10 @@
 const User = require("../models/user-model");
 const Contact = require("../models/contact-model");
 
-//Getting all user logic
-const getAllUsers = async (req, res) => {
+// Getting all users logic
+const getAllUsers = async (req, res, next) => {
   try {
     const users = await User.find({}, { password: 0 });
-    console.log(getAllUsers);
     if (!users || users.length === 0) {
       return res.status(404).json({ message: "No user found" });
     }
@@ -15,23 +14,59 @@ const getAllUsers = async (req, res) => {
   }
 };
 
-//User delete logic from admin
-const delteUserById = async (req, res) => {
+// Get single user logic from admin
+const getUserById = async (req, res, next) => {
   try {
     const id = req.params.id;
-    await User.deleteOne({ _id: id });
-    return res.status(200).json({ message: "User Deleted Succefully" });
+    const data = await User.findOne({ _id: id }, { password: 0 });
+    if (!data) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    return res.status(200).json(data);
   } catch (error) {
     next(error);
   }
 };
 
-//getting all contacts logic
-const getAllContacts = async (req, res) => {
+//User update logic
+
+const updateUserById = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const updateUserById = req.body;
+
+    const updatedData = await User.updateOne(
+      { _id: id },
+      {
+        $set: updateUserById,
+      }
+    );
+    return res.status(200).json(updatedData);
+  } catch (error) {
+    next(error);
+  }
+};
+
+// User delete logic from admin
+const deleteUserById = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const result = await User.deleteOne({ _id: id });
+    if (result.deletedCount === 0) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    return res.status(200).json({ message: "User Deleted Successfully" });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Getting all contacts logic
+const getAllContacts = async (req, res, next) => {
   try {
     const contacts = await Contact.find();
     if (!contacts || contacts.length === 0) {
-      return res.status(404).json({ message: "contacts not found" });
+      return res.status(404).json({ message: "Contacts not found" });
     }
     return res.status(200).json(contacts);
   } catch (error) {
@@ -39,4 +74,10 @@ const getAllContacts = async (req, res) => {
   }
 };
 
-module.exports = { getAllUsers, getAllContacts, delteUserById };
+module.exports = {
+  getAllUsers,
+  getAllContacts,
+  deleteUserById,
+  getUserById,
+  updateUserById,
+};
