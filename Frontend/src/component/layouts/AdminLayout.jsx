@@ -7,31 +7,38 @@ const AdminLayout = () => {
     <>
       <header>
         <div className="container">
-          <nav>
-            <ul>
-              <li>
+          <nav className="w-full h-[10vw] ">
+            <ul className="flex justify-evenly ">
+              <li className="mt-10 ml-10">
                 <NavLink to="/admin/users">
-                  <FaUser /> Users
+                  <div className="w-14 h-10 mb-2 rounded-lg hover:bg-[#ECECEC]">
+                    <FaUser className="w-10 ml-2  text-[#7D7D7D] " />
+                    <p className="ml-2">Users</p>
+                  </div>
                 </NavLink>
               </li>
-              <li>
+              <li className="mt-10 w-10">
                 <NavLink to="/admin/Contacts">
-                  {" "}
-                  <FaCommentAlt />
-                  Contacts
+                  <div className="w-16 h-10 rounded-lg hover:bg-[#ECECEC]">
+                    <FaCommentAlt className="w-10 ml-3 text-[#7D7D7D]" />
+                    Contacts
+                  </div>
                 </NavLink>
               </li>
-              <li>
+              <li className="mt-10">
                 <NavLink to="/services">
-                  <FaTasks />
-                  Services
+                  <div className="w-16 h-10 rounded-lg hover:bg-[#ECECEC]">
+                    <FaTasks className="w-10 ml-3 text-[#7D7D7D]" />
+                    <p className="ml-2">Services</p>
+                  </div>
                 </NavLink>
               </li>
-              <li>
+              <li className="mt-10">
                 <NavLink to="/">
-                  {" "}
-                  <FaHome />
-                  Home
+                  <div className="w-16 h-10 rounded-lg hover:bg-[#ECECEC]">
+                    <FaHome className="w-10 ml-2 text-[#7D7D7D]" />
+                    <p className="ml-2">Home</p>
+                  </div>
                 </NavLink>
               </li>
             </ul>

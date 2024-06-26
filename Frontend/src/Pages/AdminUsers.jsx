@@ -42,14 +42,44 @@ const AdminUsers = () => {
 
   return (
     <>
-      {error && <div>Error: {error}</div>}  
-      {users.length > 0 ? (
-        users.map((curUser, index) => {
-          return <h1 key={index}>{curUser.firstname}</h1>;
-        })
-      ) : (
-        <div>No users found</div>
-      )}
+      {error && <div>Error: {error}</div>}
+      <section>
+        <div>
+          <h1>Admin User Data</h1>
+        </div>
+        <div className="container">
+          <table>
+            <thead>
+              <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Mobile</th>
+                <th>Email</th>
+                <th>Update</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              {users.length > 0 ? (
+                users.map((curUser, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>{curUser.firstname}</td>
+                      <td>{curUser.lastname}</td>
+                      <td>{curUser.mobile}</td>
+                      <td>{curUser.email}</td>
+                      <td>Edit</td>
+                      <td>Delete</td>
+                    </tr>
+                  );
+                })
+              ) : (
+                <div>No users found</div>
+              )}
+            </tbody>
+          </table>
+        </div>
+      </section>
     </>
   );
 };
