@@ -1,6 +1,5 @@
-import React from "react";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { useAuth } from "../store/auth";
 import { toast } from "react-toastify";
 
@@ -13,12 +12,10 @@ const AdminUpdate = () => {
   });
 
   const params = useParams();
-  console.log("params single user", params);
-
+  const navigate = useNavigate();
   const { AuthorizationToken } = useAuth();
 
-  //get single user data
-
+  // Get single user data
   const getSingleUserData = async () => {
     try {
       const response = await fetch(
@@ -31,7 +28,6 @@ const AdminUpdate = () => {
         }
       );
       const data = await response.json();
-      console.log(`users single data: ${data}`);
       setData(data);
     } catch (error) {
       console.log(error);
@@ -52,7 +48,7 @@ const AdminUpdate = () => {
     });
   };
 
-  //to update the data dynamically
+  // Update the data dynamically
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -69,7 +65,8 @@ const AdminUpdate = () => {
         }
       );
       if (response.ok) {
-        toast.success("Update succesfully");
+        toast.success("Update successfully");
+        navigate("/admin/users"); // Navigate to AdminUsers after successful update
       } else {
         toast.error("Not Updated");
       }
@@ -79,15 +76,20 @@ const AdminUpdate = () => {
   };
 
   return (
-    <section className="section-contact">
-      <div className="contact-content">
-        <h1 className="main-heading">Update User Data</h1>
-      </div>
-      <div>
-        <section>
-          <form onSubmit={handleSubmit}>
+    <section className="bg-gray-100 py-10">
+      <div className="container mx-auto">
+        <div className="bg-white shadow-md rounded-lg p-8 w-1/2 mx-auto">
+          <h1 className="text-4xl font-semibold text-center text-gray-800 mb-6">
+            Update User Data
+          </h1>
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label htmlFor="firstname">firstname</label>
+              <label
+                htmlFor="firstname"
+                className="block text-lg font-medium text-gray-700"
+              >
+                First Name
+              </label>
               <input
                 type="text"
                 name="firstname"
@@ -96,64 +98,73 @@ const AdminUpdate = () => {
                 value={data.firstname}
                 onChange={handleInput}
                 required
+                className="mt-2 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 hover:border-blue-500 transition duration-300"
               />
             </div>
-
             <div>
-              <label htmlFor="lastname">
-                <div>
-                  <label htmlFor="lastname">lastname</label>
-                  <input
-                    type="text"
-                    name="lastname"
-                    id="lastname"
-                    autoComplete="off"
-                    value={data.lastname}
-                    onChange={handleInput}
-                    required
-                  />
-                </div>
+              <label
+                htmlFor="lastname"
+                className="block text-lg font-medium text-gray-700"
+              >
+                Last Name
               </label>
-            </div>
-
-            <div>
-              <label htmlFor="mobile">
-                <div>
-                  <label htmlFor="mobile">mobile</label>
-                  <input
-                    type="text"
-                    name="mobile"
-                    id="mobile"
-                    autoComplete="off"
-                    value={data.mobile}
-                    onChange={handleInput}
-                    required
-                  />
-                </div>
-              </label>
-            </div>
-
-            <div>
-              <label htmlFor="email">
-                <div>
-                  <label htmlFor="email">email</label>
-                  <input
-                    type="text"
-                    name="email"
-                    id="email"
-                    autoComplete="off"
-                    value={data.email}
-                    onChange={handleInput}
-                    required
-                  />
-                </div>
-              </label>
+              <input
+                type="text"
+                name="lastname"
+                id="lastname"
+                autoComplete="off"
+                value={data.lastname}
+                onChange={handleInput}
+                required
+                className="mt-2 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 hover:border-blue-500 transition duration-300"
+              />
             </div>
             <div>
-              <button type="submit">Update</button>
+              <label
+                htmlFor="mobile"
+                className="block text-lg font-medium text-gray-700"
+              >
+                Mobile
+              </label>
+              <input
+                type="text"
+                name="mobile"
+                id="mobile"
+                autoComplete="off"
+                value={data.mobile}
+                onChange={handleInput}
+                required
+                className="mt-2 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 hover:border-blue-500 transition duration-300"
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="email"
+                className="block text-lg font-medium text-gray-700"
+              >
+                Email
+              </label>
+              <input
+                type="text"
+                name="email"
+                id="email"
+                autoComplete="off"
+                value={data.email}
+                onChange={handleInput}
+                required
+                className="mt-2 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 hover:border-blue-500 transition duration-300"
+              />
+            </div>
+            <div>
+              <button
+                type="submit"
+                className="w-full py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition duration-300"
+              >
+                Update
+              </button>
             </div>
           </form>
-        </section>
+        </div>
       </div>
     </section>
   );
