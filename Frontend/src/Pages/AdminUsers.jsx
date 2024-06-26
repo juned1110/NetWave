@@ -44,8 +44,10 @@ const AdminUsers = () => {
     <>
       {error && <div>Error: {error}</div>}
       <section>
-        <div>
-          <h1>Admin User Data</h1>
+        <div className="w-full h-[15vh]">
+          <h1 className="text-6xl text-center font-semibold">
+            Admin User Data
+          </h1>
         </div>
         <div className="container">
           <table>
