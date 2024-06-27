@@ -13,7 +13,6 @@ import Experience from "../component/Experience";
 import Fiber from "../component/Fiber";
 import Feature from "../component/Feature";
 import Support from "../component/Support";
-import Contactus from "../component/Contactus";
 import GoogleFontLoader from "react-google-font-loader";
 import { useAuth } from "../store/auth";
 
@@ -174,7 +173,6 @@ const Navbar = () => {
       {location.pathname === "/" && <Fiber />}
       {location.pathname === "/" && <Feature />}
       {location.pathname === "/" && <Support />}
-      {location.pathname === "/" && <Contactus />}
     </>
   );
 };

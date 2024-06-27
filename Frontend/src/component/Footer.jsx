@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <>
       <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
-      <footer className="bg-gray-800 text-white py-6 mt-[15vh] w-full h-[40vh]">
+      <footer className="bg-gray-800 text-white py-6 mt-[65vh] w-full h-[40vh]">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 mt-4">
