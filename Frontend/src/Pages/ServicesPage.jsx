@@ -13,7 +13,6 @@ const ServicesPage = () => {
   const [loadingImages, setLoadingImages] = useState(true);
   const { services } = useAuth();
 
-  // Assuming service images are imported directly from assets
   const serviceImg = [img1, img2, img3, img4, img5, img6];
 
   useEffect(() => {
