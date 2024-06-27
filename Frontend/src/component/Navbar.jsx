@@ -15,6 +15,7 @@ import Feature from "../component/Feature";
 import Support from "../component/Support";
 import GoogleFontLoader from "react-google-font-loader";
 import { useAuth } from "../store/auth";
+import { FaPowerOff } from "react-icons/fa";
 
 const Navbar = () => {
   const [showModal, setShowModal] = useState(false);
@@ -123,10 +124,7 @@ const Navbar = () => {
               </NavLink>
             </li>
             {isLoggedIn ? (
-              <button
-                className="ml-8 text-xl my-5 mr-10 cursor-pointer rounded-full px-6 py-2 bg-[#F4F4F4] text-[#676262] hover:text-[#FB0300]"
-                style={{ fontFamily: "Signika Negative" }}
-              >
+              <button className="ml-8 text-xl my-5 mr-10 cursor-pointer rounded-full px-5 py-4 bg-[#ffffff] text-[#676262] hover:text-[#FB0300]">
                 <NavLink to="logout">
                   <button
                     onMouseEnter={handleHover}
@@ -134,8 +132,7 @@ const Navbar = () => {
                     onClick={logout}
                     className="flex flex-row-reverse"
                   >
-                    Logout
-                    <img src={img1} className="w-7 mr-1" />
+                    <FaPowerOff />
                   </button>
                 </NavLink>
               </button>
@@ -165,9 +162,9 @@ const Navbar = () => {
       )}
       {location.pathname === "/" && <HeroSection />}
       {location.pathname === "/" && <Client />}
+      {location.pathname === "/" && <Promo />}
       {location.pathname === "/" && <Router />}
       {location.pathname === "/" && <Adv />}
-      {location.pathname === "/" && <Promo />}
       {location.pathname === "/" && <Services />}
       {location.pathname === "/" && <Experience />}
       {location.pathname === "/" && <Fiber />}
