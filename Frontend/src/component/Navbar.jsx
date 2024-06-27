@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import img from "../assets/logo.png";
 import Login from "../Pages/Login";
@@ -15,6 +15,8 @@ import Support from "../component/Support";
 import GoogleFontLoader from "react-google-font-loader";
 import { useAuth } from "../store/auth";
 import { FaPowerOff } from "react-icons/fa";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const Navbar = () => {
   const [showModal, setShowModal] = useState(false);
@@ -56,6 +58,25 @@ const Navbar = () => {
     zIndex: showModal ? "9999" : "auto",
   };
 
+  ///GSAP ANIMATION CODE///
+
+  const logoref = useRef();
+
+  //Logo-Animation//
+  useGSAP(() => {
+    gsap.from(logoref.current, {
+      rotate: 360,
+      scale: 0,
+      duration: 3,
+      opacity: 0,
+      delay: 1,
+      yoyo: true,
+      repeat: -1,
+    });
+  });
+
+  
+
   return (
     <>
       <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
@@ -66,7 +87,7 @@ const Navbar = () => {
         <nav className="flex items-center justify-between px-12">
           <div>
             <NavLink to="/">
-              <img src={img} alt="logo" className="w-20 h-20" />
+              <img src={img} alt="logo" ref={logoref} className="w-20 h-20" />
             </NavLink>
           </div>
           <ul className="flex items-center">
