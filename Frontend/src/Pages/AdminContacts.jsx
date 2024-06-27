@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { useAuth } from "../store/auth";
 
 const AdminContacts = () => {
@@ -23,6 +24,30 @@ const AdminContacts = () => {
     }
   };
 
+  const deleteContactById = async (id) => {
+    try {
+      const response = await fetch(
+        `http://localhost:5000/api/admin/contacts/delete/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: AuthorizationToken,
+          },
+        }
+      );
+
+      if (response.ok) {
+        getContactsData();
+        toast.success("Contact Deleted");
+      } else {
+        toast.error("Not Deleted");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("An error occurred while deleting the contact");
+    }
+  };
+
   useEffect(() => {
     getContactsData();
   }, []);
@@ -35,7 +60,8 @@ const AdminContacts = () => {
 
       <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {contactData.map((curContactData, index) => {
-          const { username, email, message, location, phone } = curContactData;
+          const { username, email, message, location, phone, _id } =
+            curContactData;
           return (
             <div
               key={index}
@@ -56,7 +82,12 @@ const AdminContacts = () => {
               <p className="text-gray-500 mb-4 capitalize font-medium">
                 <span className="font-semibold">Message:</span> {message}
               </p>
-              <button className="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 transition duration-300">
+              <button
+                className="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 transition duration-300"
+                onClick={() => {
+                  deleteContactById(_id);
+                }}
+              >
                 Delete
               </button>
             </div>

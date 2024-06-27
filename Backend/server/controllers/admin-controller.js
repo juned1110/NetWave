@@ -74,10 +74,25 @@ const getAllContacts = async (req, res, next) => {
   }
 };
 
+// contacts delete logic from admin
+const deleteContactById = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const result = await Contact.deleteOne({ _id: id });
+    if (result.deletedCount === 0) {
+      return res.status(404).json({ message: "Contact not found" });
+    }
+    return res.status(200).json({ message: "Contact Deleted Successfully" });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   getAllUsers,
   getAllContacts,
   deleteUserById,
   getUserById,
   updateUserById,
+  deleteContactById,
 };

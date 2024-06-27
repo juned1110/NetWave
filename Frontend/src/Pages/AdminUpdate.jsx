@@ -66,7 +66,7 @@ const AdminUpdate = () => {
       );
       if (response.ok) {
         toast.success("Update successfully");
-        navigate("/admin/users"); // Navigate to AdminUsers after successful update
+        navigate("/admin/users");
       } else {
         toast.error("Not Updated");
       }
