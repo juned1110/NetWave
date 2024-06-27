@@ -4,9 +4,11 @@ import { useAuth } from "../store/auth";
 
 const AdminContacts = () => {
   const [contactData, setContactData] = useState([]);
+  const [loading, setLoading] = useState(false);
   const { AuthorizationToken } = useAuth();
 
   const getContactsData = async () => {
+    setLoading(true);
     try {
       const response = await fetch("http://localhost:5000/api/admin/contacts", {
         method: "GET",
@@ -21,6 +23,9 @@ const AdminContacts = () => {
       }
     } catch (error) {
       console.log(error);
+      toast.error("An error occurred while fetching the contacts");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -58,42 +63,46 @@ const AdminContacts = () => {
         Admin Contact Data
       </h1>
 
-      <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {contactData.map((curContactData, index) => {
-          const { username, email, message, location, phone, _id } =
-            curContactData;
-          return (
-            <div
-              key={index}
-              className="bg-white shadow-md rounded-lg p-6 border border-gray-200"
-            >
-              <p className="text-xl font-semibold text-gray-700 mb-2 capitalize">
-                {username}
-              </p>
-              <p className="text-gray-600 mb-2 font-medium">
-                <span className="font-semibold">Phone:</span> {phone}
-              </p>
-              <p className="text-gray-600 mb-2 font-medium">
-                <span className="font-semibold">Location:</span> {location}
-              </p>
-              <p className="text-gray-600 mb-2 font-medium">
-                <span className="font-semibold">Email:</span> {email}
-              </p>
-              <p className="text-gray-500 mb-4 capitalize font-medium">
-                <span className="font-semibold">Message:</span> {message}
-              </p>
-              <button
-                className="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 transition duration-300"
-                onClick={() => {
-                  deleteContactById(_id);
-                }}
+      {loading ? (
+        <div className="text-center">Loading...</div>
+      ) : (
+        <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {contactData.map((curContactData, index) => {
+            const { username, email, message, location, phone, _id } =
+              curContactData;
+            return (
+              <div
+                key={index}
+                className="bg-white shadow-md rounded-lg p-6 border border-gray-200"
               >
-                Delete
-              </button>
-            </div>
-          );
-        })}
-      </div>
+                <p className="text-xl font-semibold text-gray-700 mb-2 capitalize">
+                  {username}
+                </p>
+                <p className="text-gray-600 mb-2 font-medium">
+                  <span className="font-semibold">Phone:</span> {phone}
+                </p>
+                <p className="text-gray-600 mb-2 font-medium">
+                  <span className="font-semibold">Location:</span> {location}
+                </p>
+                <p className="text-gray-600 mb-2 font-medium">
+                  <span className="font-semibold">Email:</span> {email}
+                </p>
+                <p className="text-gray-500 mb-4 capitalize font-medium">
+                  <span className="font-semibold">Message:</span> {message}
+                </p>
+                <button
+                  className="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 transition duration-300"
+                  onClick={() => {
+                    deleteContactById(_id);
+                  }}
+                >
+                  Delete
+                </button>
+              </div>
+            );
+          })}
+        </div>
+      )}
     </section>
   );
 };
