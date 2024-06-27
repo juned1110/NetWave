@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import img from "../assets/logo.png";
-import img1 from "../assets/logout.png";
 import Login from "../Pages/Login";
 import HeroSection from "../component/HeroSection";
 import Client from "../component/Client";
