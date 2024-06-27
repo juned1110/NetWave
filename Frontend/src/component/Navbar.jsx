@@ -62,7 +62,7 @@ const Navbar = () => {
       <GoogleFontLoader
         fonts={[{ font: "Signika Negative", weights: [400, 700] }]}
       />
-      <div className="bg-zinc-900 rounded-full sticky top-0 shadow-xl shadow-[#504848] mb-[2px] z-10">
+      <div className="bg-zinc-900 rounded-full sticky top-0 shadow-xl shadow-[#504848] mb-[2px] z-20">
         <nav className="flex items-center justify-between px-12">
           <div>
             <NavLink to="/">

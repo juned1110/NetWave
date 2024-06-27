@@ -11,12 +11,12 @@ const Support = () => {
   return (
     <>
       <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
-      <div className="relative">
-        <div className="image w-full h-screen overflow-hidden relative">
+      <div className="relative ">
+        <div className="image w-full h-screen overflow-hidden relative ">
           <img
             src={img1}
             alt="Promotional Image"
-            className="rounded-t-[40px] mx-14 w-[83.5vw] h-[120vh] ml-[9vw]"
+            className="rounded-t-[40px] mx-14 w-[83.5vw] h-[120vh] ml-[9vw] "
           />
           <div
             className="absolute -top-20 right-[17vw] w-[15vw] text-center text-white bg-[#03E9F4] py-1 mt-48 ml-28 rounded-xl z-10"
@@ -24,9 +24,9 @@ const Support = () => {
           >
             NEED MORE HELP?
           </div>
-          <div className="absolute top-0 left-0 mt-[30vh] ml-20 z-10">
+          <div className="absolute top-0 left-0 mt-[30vh] ml-20  z-10">
             <div
-              className="text-center text-black text-3xl ml-[45vw] font-bold "
+              className="text-center text-black text-3xl ml-[45vw] font-bold"
               style={{ width: "45vw", fontFamily: "Play" }}
             >
               Contact our team of
@@ -45,7 +45,7 @@ const Support = () => {
             </div>
           </div>
           <div
-            className="absolute  h-[55vh] top-0 left-0 mt-[10vh] ml-[60vw] border-solid border-2 border-[#03E9F4] rounded-xl"
+            className="absolute  h-[55vh] top-0 left-0 mt-[10vh] ml-[60vw] border-solid border-2 border-[#03E9F4] rounded-xl "
             style={{
               width: "30vw",
               padding: "1rem",
