@@ -8,8 +8,8 @@ import img6 from "../assets/logo-6.png";
 
 const Client = () => {
   return (
-    <div className="w-full h-28 bg-[#F2F2F2]">
-      <div className="img flex justify-evenly">
+    <div className="w-full h-52">
+      <div className="img flex mt-14 justify-evenly h-[26vh]">
         <img src={img1} alt="" />
         <img src={img2} alt="" />
         <img src={img3} alt="" />
