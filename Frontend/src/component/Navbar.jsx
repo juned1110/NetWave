@@ -16,7 +16,6 @@ import GoogleFontLoader from "react-google-font-loader";
 import { useAuth } from "../store/auth";
 import { FaPowerOff } from "react-icons/fa";
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 
 const Navbar = () => {
   const [showModal, setShowModal] = useState(false);
@@ -58,24 +57,53 @@ const Navbar = () => {
     zIndex: showModal ? "9999" : "auto",
   };
 
-  ///GSAP ANIMATION CODE///
-
+  // GSAP ANIMATION CODE
   const logoref = useRef();
+  const navbarRef = useRef();
 
-  //Logo-Animation//
-  useGSAP(() => {
-    gsap.from(logoref.current, {
-      rotate: 360,
-      scale: 0,
-      duration: 3,
-      opacity: 0,
-      delay: 1,
-      yoyo: true,
-      repeat: -1,
-    });
-  });
+  // Navbar refs
+  const navrefOne = useRef();
+  const navrefTwo = useRef();
+  const navrefThree = useRef();
+  const navrefFour = useRef();
+  const getStartedRef = useRef();
 
-  
+  // Logo Animation
+  useEffect(() => {
+    gsap.fromTo(
+      logoref.current,
+      { rotate: 0, scale: 0 },
+      {
+        rotate: 360,
+        scale: 1,
+        duration: 3,
+        opacity: 1,
+        repeat: -1,
+        yoyo: true,
+        ease: "power1.inOut",
+      }
+    );
+  }, []);
+
+  // Navbar Opacity Animation on Mount
+  useEffect(() => {
+    gsap.to(
+      [
+        navbarRef.current,
+        navrefOne.current,
+        navrefTwo.current,
+        navrefThree.current,
+        navrefFour.current,
+        getStartedRef.current,
+      ],
+      {
+        opacity: 1,
+        duration: 1,
+        stagger: 0.3,
+        ease: "power1.out",
+      }
+    );
+  }, []);
 
   return (
     <>
@@ -83,7 +111,11 @@ const Navbar = () => {
       <GoogleFontLoader
         fonts={[{ font: "Signika Negative", weights: [400, 700] }]}
       />
-      <div className="bg-zinc-900 rounded-full sticky top-0 shadow-xl shadow-[#504848] mb-[2px] z-20">
+      <div
+        className="bg-zinc-900 rounded-full sticky top-0 shadow-xl shadow-[#504848] mb-[2px] z-20"
+        ref={navbarRef}
+        style={{ opacity: 0 }}
+      >
         <nav className="flex items-center justify-between px-12">
           <div>
             <NavLink to="/">
@@ -91,7 +123,11 @@ const Navbar = () => {
             </NavLink>
           </div>
           <ul className="flex items-center">
-            <li className="ml-8 text-xl my-5 mr-5 duration-500 cursor-pointer">
+            <li
+              ref={navrefOne}
+              className="ml-8 text-xl my-5 mr-5 duration-500 cursor-pointer"
+              style={{ opacity: 0 }}
+            >
               <NavLink
                 style={{ fontFamily: "Play" }}
                 to="/"
@@ -104,7 +140,11 @@ const Navbar = () => {
                 Home
               </NavLink>
             </li>
-            <li className="ml-8 text-xl my-5 mr-5 duration-500 cursor-pointer">
+            <li
+              ref={navrefTwo}
+              className="ml-8 text-xl my-5 mr-5 duration-500 cursor-pointer"
+              style={{ opacity: 0 }}
+            >
               <NavLink
                 style={{ fontFamily: "Play" }}
                 to="/Packages"
@@ -117,7 +157,11 @@ const Navbar = () => {
                 Packages
               </NavLink>
             </li>
-            <li className="ml-8 text-xl my-5 mr-5 duration-500 cursor-pointer">
+            <li
+              ref={navrefThree}
+              className="ml-8 text-xl my-5 mr-5 duration-500 cursor-pointer"
+              style={{ opacity: 0 }}
+            >
               <NavLink
                 style={{ fontFamily: "Play" }}
                 to="/Services"
@@ -130,7 +174,11 @@ const Navbar = () => {
                 Services
               </NavLink>
             </li>
-            <li className="ml-8 text-xl my-5 mr-5 duration-500 cursor-pointer">
+            <li
+              ref={navrefFour}
+              className="ml-8 text-xl my-5 mr-5 duration-500 cursor-pointer"
+              style={{ opacity: 0 }}
+            >
               <NavLink
                 style={{ fontFamily: "Play" }}
                 to="/Contactus"
@@ -157,7 +205,11 @@ const Navbar = () => {
                 </NavLink>
               </button>
             ) : (
-              <li className="ml-8 text-xl my-5 mr-5 duration-500 cursor-pointer">
+              <li
+                className="ml-8 text-xl my-5 mr-5 duration-500 cursor-pointer"
+                ref={getStartedRef}
+                style={{ opacity: 0 }}
+              >
                 <button
                   style={blueButtonStyles}
                   onMouseEnter={handleHover}
