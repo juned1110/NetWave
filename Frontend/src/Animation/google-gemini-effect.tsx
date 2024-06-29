@@ -1,9 +1,7 @@
 "use client";
-import { useGSAP } from "@gsap/react";
 import { cn } from "../utils/cn";
 import { motion, MotionValue } from "framer-motion";
-import gsap from "gsap";
-import React, { useEffect, useRef } from "react";
+import React from "react";
 
 const transition = {
   duration: 0,
