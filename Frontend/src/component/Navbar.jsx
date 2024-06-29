@@ -17,6 +17,7 @@ import { useAuth } from "../store/auth";
 import { FaPowerOff } from "react-icons/fa";
 import gsap from "gsap";
 import { LampDemo } from "../Animation/lamp";
+import { GoogleGeminiEffectDemo } from "../Animation/googleComponent";
 
 const Navbar = () => {
   const [showModal, setShowModal] = useState(false);
@@ -233,6 +234,7 @@ const Navbar = () => {
           showHideCrossBtn={true}
         />
       )}
+      {location.pathname === "/" && <GoogleGeminiEffectDemo />}
       {location.pathname === "/" && <LampDemo />}
       {location.pathname === "/" && <HeroSection />}
       {location.pathname === "/" && <Client />}
