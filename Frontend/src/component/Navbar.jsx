@@ -16,6 +16,7 @@ import GoogleFontLoader from "react-google-font-loader";
 import { useAuth } from "../store/auth";
 import { FaPowerOff } from "react-icons/fa";
 import gsap from "gsap";
+import { LampDemo } from "../Animation/lamp";
 
 const Navbar = () => {
   const [showModal, setShowModal] = useState(false);
@@ -232,6 +233,7 @@ const Navbar = () => {
           showHideCrossBtn={true}
         />
       )}
+      {location.pathname === "/" && <LampDemo />}
       {location.pathname === "/" && <HeroSection />}
       {location.pathname === "/" && <Client />}
       {location.pathname === "/" && <Promo />}
