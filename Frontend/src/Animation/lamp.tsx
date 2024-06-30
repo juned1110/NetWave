@@ -1,9 +1,26 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { motion, useAnimation } from "framer-motion";
+import React, { useEffect, useState, useCallback } from "react";
+import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import { cn } from "../utils/cn";
 
 export function LampDemo() {
+  const words = ["HighVelociity", "QuickMoving", "HyperSpeedy", "SpeedDriiven"];
+  const [currentWord, setCurrentWord] = useState(words[0]);
+  const [wordIndex, setWordIndex] = useState(0);
+
+  const nextWord = useCallback(() => {
+    setWordIndex((prevIndex) => (prevIndex + 1) % words.length);
+  }, [words.length]);
+
+  useEffect(() => {
+    const interval = setInterval(nextWord, 3000);
+    return () => clearInterval(interval);
+  }, [nextWord]);
+
+  useEffect(() => {
+    setCurrentWord(words[wordIndex]);
+  }, [wordIndex, words]);
+
   return (
     <LampContainer>
       <motion.h1
@@ -15,8 +32,7 @@ export function LampDemo() {
           ease: "easeInOut",
         }}
         className="mt-8 bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl"
-      >
-      </motion.h1>
+      ></motion.h1>
       <motion.h1
         initial={{ opacity: 0.5, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -26,8 +42,29 @@ export function LampDemo() {
           ease: "easeInOut",
         }}
       >
-        <p className="w-full text-8xl font-bold ml-20">Stop wasting time.</p> <br /> <p className="w-full text-8xl font-bold ml-20">Start connecting.</p>
-        <div className="border border-[#3dc0f3] h-1 w-[45vw] bg-[#3dc0f3] ml-36 mt-10 mb-5"></div>
+        <div className="flex flex-col items-start">
+          <div className="w-full text-8xl font-bold ml-20 flex items-center">
+            <AnimatePresence mode='wait'>
+              <motion.span
+                key={currentWord}
+                initial={{ opacity: 0, y: 10, filter: "blur(8px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                exit={{ opacity: 0, y: -10, filter: "blur(8px)" }}
+                transition={{
+                  duration: 0.4,
+                  ease: "easeInOut",
+                }}
+                className="inline-block mr-4 text-zinc-600"
+              >
+                {currentWord}
+              </motion.span>
+            </AnimatePresence>
+            <p className="ml-5">Internet</p>
+          </div>
+          <br />
+          <p className="w-full text-8xl font-bold ml-20">Experience with NetWave</p>
+          <div className="border border-[#3dc0f3] h-1 w-[45vw] bg-[#3dc0f3] ml-36 mt-10 mb-5"></div>
+        </div>
       </motion.h1>
     </LampContainer>
   );
