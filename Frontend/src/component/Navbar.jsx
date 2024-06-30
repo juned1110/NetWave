@@ -72,19 +72,22 @@ const Navbar = () => {
 
   // Logo Animation
   useEffect(() => {
-    gsap.fromTo(
+    const animation = gsap.fromTo(
       logoref.current,
-      { rotate: 0, scale: 0 },
+      { rotateY: 0, scale: 1 },
       {
-        rotate: 360,
+        rotateY: 360,
         scale: 1,
-        duration: 3,
-        opacity: 1,
+        duration: 1,
         repeat: -1,
-        yoyo: true,
+        repeatDelay: 3,
         ease: "power1.inOut",
       }
     );
+
+    return () => {
+      animation.kill();
+    };
   }, []);
 
   // Navbar Opacity Animation on Mount
