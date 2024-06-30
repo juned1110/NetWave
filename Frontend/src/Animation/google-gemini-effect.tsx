@@ -1,7 +1,9 @@
 "use client";
 import { cn } from "../utils/cn";
-import { motion, MotionValue } from "framer-motion";
+import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
 import React from "react";
+import GoogleFontLoader from "react-google-font-loader";
+
 
 const transition = {
   duration: 0,
@@ -19,14 +21,37 @@ export const GoogleGeminiEffect = ({
   className?: string;
   
 }) => {
+  const { scrollY } = useScroll();
+  const textGlow = useTransform(
+    scrollY,
+    [0, 300],
+    ["0px 0px 10px rgba(73, 158, 237, 0.8)", "0px 0px 20px rgba(215, 177, 209, 0.8)"]
+  );
+
+  const textGlare = useTransform(
+    scrollY,
+    [0, 300],
+    ["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 0.3)"]
+  );
   return (
     <div className={cn("sticky top-36", className)}>
-      <p className="text-lg md:text-7xl font-bold italic pb-4 text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-100 to-neutral-300 h-[110vh] flex items-center">
-      <h1 className="w-full h-[40vh] mb-40 text-8xl bg-gradient-to-t from-gray-950 to-zinc-200 bg-clip-text text-transparent">
+      <GoogleFontLoader fonts={[{ font: "Black Ops One", weights: [400, 700] }]} />
+      <div className="text-lg md:text-7xl font-bold italic pb-4 text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-100 to-neutral-300 h-[110vh] flex items-center">
+        <motion.h1
+          className="w-full h-[40vh] mb-40 text-8xl bg-clip-text text-transparent text-center"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          style={{
+            textShadow: textGlow.get(),
+            backgroundImage: `linear-gradient(to right, ${textGlare.get()}, ${textGlare.get()})`,
+            fontFamily: "Black Ops One",
+            color: "#499EED",
+          }}
+        >
           Experience NetWave
-      </h1>
-
-        </p>
+        </motion.h1>
+      </div>
       <svg
         width="1440"
         height="890"
