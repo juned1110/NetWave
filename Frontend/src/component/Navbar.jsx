@@ -241,7 +241,7 @@ const Navbar = () => {
       {location.pathname === "/" && <Promo />}
       {location.pathname === "/" && <Router />}
       {location.pathname === "/" && <Adv />}
-      {location.pathname === "/" && <Services />}
+      {/* {location.pathname === "/" && <Services />} */}
       {location.pathname === "/" && <Experience />}
       {location.pathname === "/" && <Fiber />}
       {location.pathname === "/" && <Feature />}

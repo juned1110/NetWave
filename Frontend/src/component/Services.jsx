@@ -27,7 +27,6 @@ const Services = () => {
 
     return () => clearTimeout(timer);
   }, []);
-
   return (
     <>
       <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
