@@ -28,14 +28,6 @@ const Services = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  if (!user) {
-    return (
-      <div className="flex justify-center items-center mt-[40vh] text-5xl font-bold">
-        <div className="h-[30vh]">Loading...</div>
-      </div>
-    );
-  }
-
   return (
     <>
       <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
