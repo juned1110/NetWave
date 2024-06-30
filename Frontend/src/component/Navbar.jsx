@@ -236,7 +236,7 @@ const Navbar = () => {
       )}
       {location.pathname === "/" && <GoogleGeminiEffectDemo />}
       {location.pathname === "/" && <LampDemo />}
-      {location.pathname === "/" && <HeroSection />}
+      {/* {location.pathname === "/" && <HeroSection />} */}
       {location.pathname === "/" && <Client />}
       {location.pathname === "/" && <Promo />}
       {location.pathname === "/" && <Router />}

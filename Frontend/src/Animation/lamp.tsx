@@ -2,8 +2,12 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import { cn } from "../utils/cn";
+import GoogleFontLoader from "react-google-font-loader";
+
 
 export function LampDemo() {
+  <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
+  
   const words = ["HighVelociity", "QuickMoving", "HyperSpeedy", "SpeedDriiven"];
   const [currentWord, setCurrentWord] = useState(words[0]);
   const [wordIndex, setWordIndex] = useState(0);
@@ -43,7 +47,7 @@ export function LampDemo() {
         }}
       >
         <div className="flex flex-col items-start">
-          <div className="w-full text-8xl font-bold ml-20 flex items-center">
+          <div className="w-full text-8xl font-bold ml-20 flex items-center -mb-12">
             <AnimatePresence mode='wait'>
               <motion.span
                 key={currentWord}
@@ -54,16 +58,22 @@ export function LampDemo() {
                   duration: 0.4,
                   ease: "easeInOut",
                 }}
-                className="inline-block mr-4 text-zinc-600"
+                className=" inline-block mr-4 text-[#FF91A4]"
+                style={{ fontFamily: "Play" }}
               >
                 {currentWord}
               </motion.span>
             </AnimatePresence>
-            <p className="ml-5">Internet</p>
+            <p className="ml-5 "
+            style={{ fontFamily: "Play" }}>Internet</p>
           </div>
           <br />
-          <p className="w-full text-8xl font-bold ml-20">Experience with NetWave</p>
-          <div className="border border-[#3dc0f3] h-1 w-[45vw] bg-[#3dc0f3] ml-36 mt-10 mb-5"></div>
+          <br />
+          <p className="w-full text-8xl font-bold ml-20 -mb-12" style={{ fontFamily: "Play" }}>Experience with <span className="decoration-3 decoration-green-600 underline" style={{ fontFamily: "Play" }}>NetWave</span></p>
+          <br />
+          <br />
+          <br />
+          <div className="border border-[#3dc0f3] h-1 w-[70vw] bg-[#3dc0f3] ml-36 mt-10 mb-5"></div>
         </div>
       </motion.h1>
     </LampContainer>
