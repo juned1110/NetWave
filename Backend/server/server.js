@@ -8,6 +8,11 @@ const serviceRoute = require("./router/service-route");
 const adminRoute = require("./router/admin-router");
 const connectDb = require("./utils/db");
 const errorMiddleware = require("./middlewares/error-middleware");
+const paymentRoute = require("./router/payments");
+
+// const bodyParser = require("body-parser");
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
 
 // CORS configuration
 const corsOptions = {
@@ -25,6 +30,9 @@ app.use("/api/data", serviceRoute);
 
 //defining admon routes
 app.use("/api/admin", adminRoute);
+
+//Payment Gateway route
+app.use("/api/payment", paymentRoute);
 
 app.use(errorMiddleware);
 
