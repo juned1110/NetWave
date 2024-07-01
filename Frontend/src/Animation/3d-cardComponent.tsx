@@ -2,6 +2,7 @@
 
 import React from "react";
 import { CardBody, CardContainer, CardItem } from "../Animation/3d-card";
+import img from "../assets/logo.png";
 import img1 from "../assets/card1.png";
 import img2 from "../assets/card2.png";
 import img3 from "../assets/card3.png";
@@ -55,9 +56,9 @@ export function ThreeDCardDemo() {
               <CardItem
                 translateZ={20}
                 as="button"
-                className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
+                className="px-4 py-2 rounded-xl dark:bg-white dark:text-black text-white text-xs font-bold w-16"
               >
-                Sign up
+                <img src={img} alt="" />
               </CardItem>
             </div>
           </CardBody>
