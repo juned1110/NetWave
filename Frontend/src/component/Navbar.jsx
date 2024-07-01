@@ -18,6 +18,7 @@ import { FaPowerOff } from "react-icons/fa";
 import gsap from "gsap";
 import { LampDemo } from "../Animation/lamp";
 import { GoogleGeminiEffectDemo } from "../Animation/googleComponent";
+import { ThreeDCardDemo } from "../Animation/3d-cardComponent";
 
 const Navbar = () => {
   const [showModal, setShowModal] = useState(false);
@@ -245,6 +246,7 @@ const Navbar = () => {
       {location.pathname === "/" && <Router />}
       {location.pathname === "/" && <Adv />}
       {/* {location.pathname === "/" && <Services />} */}
+      {location.pathname === "/" && <ThreeDCardDemo />}
       {location.pathname === "/" && <Experience />}
       {location.pathname === "/" && <Fiber />}
       {location.pathname === "/" && <Feature />}

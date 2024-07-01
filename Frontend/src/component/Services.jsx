@@ -27,10 +27,11 @@ const Services = () => {
 
     return () => clearTimeout(timer);
   }, []);
+
   return (
     <>
       <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
-      <div className="relative w-full h-auto bg-gradient-to-r from-[#ffffff] to-[#ECE9E6]">
+      <div className="relative w-full h-auto bg-[#F9F9F9]">
         <div
           className="absolute mt-20 left-14 text-4xl text-black font-bold"
           style={{ fontFamily: "Play" }}
@@ -59,12 +60,14 @@ const Services = () => {
                   className="mb-2 text-xl leading-tight text-black font-bold"
                   style={{ fontFamily: "Play" }}
                 >
-                  {services[index].service}
+                  {services && services[index] && services[index].service}
                   <p>in just</p>
-                  <p className="text-[#E502B6]">{services[index].price}</p>
+                  <p className="text-[#E502B6]">
+                    {services && services[index] && services[index].price}
+                  </p>
                 </h5>
                 <p className="text-base text-gray-600">
-                  {services[index].description}
+                  {services && services[index] && services[index].description}
                 </p>
                 <div className="border border-[#03E9F4] h-0.5 w-16 mx-auto mt-5 mb-5"></div>
               </div>

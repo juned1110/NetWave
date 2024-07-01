@@ -1,36 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import GoogleFontLoader from "react-google-font-loader";
 import { useAuth } from "../store/auth";
 
 const PackagesPage = () => {
-  const [isYearly, setIsYearly] = useState(false);
   const { user, isLoggedIn } = useAuth();
 
   useEffect(() => {
     console.log("User object:", user);
     console.log("Is logged in:", isLoggedIn);
   }, [user, isLoggedIn]);
-
-  const packages = [
-    {
-      name: "Basic",
-      monthlyPrice: 400,
-      yearlyPrice: 4500,
-      description: " 25 Mbps",
-    },
-    {
-      name: "Advance",
-      monthlyPrice: 600,
-      yearlyPrice: 7000,
-      description: " 50 Mbps",
-    },
-    {
-      name: "Premium",
-      monthlyPrice: 800,
-      yearlyPrice: 9000,
-      description: " 80 Mbps",
-    },
-  ];
 
   if (!user) {
     return (
