@@ -47,7 +47,7 @@ export function LampDemo() {
         }}
       >
         <div className="flex flex-col items-start">
-          <div className="w-full text-8xl font-bold ml-20 flex items-center -mb-12">
+          <div className="w-full text-5xl md:text-8xl font-bold ml-20 flex items-center -mb-12">
             <AnimatePresence mode='wait'>
               <motion.span
                 key={currentWord}
@@ -69,11 +69,11 @@ export function LampDemo() {
           </div>
           <br />
           <br />
-          <p className="w-full text-8xl font-bold ml-20 -mb-12" style={{ fontFamily: "Play" }}>Experience with <span className="decoration-3 decoration-green-600 underline" style={{ fontFamily: "Play" }}>NetWave</span></p>
+          <p className="w-full text-6xl md:text-8xl font-bold ml-20 -mb-12 md:ml-48" style={{ fontFamily: "Play" }}>Experience with <p className="decoration-3 decoration-green-600 underline ml-24 md:5xl md:ml-40" style={{ fontFamily: "Play" }}>NetWave</p></p>
           <br />
           <br />
           <br />
-          <div className="border border-[#3dc0f3] h-1 w-[70vw] bg-[#3dc0f3] ml-36 mt-10 mb-5"></div>
+          <div className="border border-[#3dc0f3] h-1 w-[70vw] bg-[#3dc0f3] md:ml-10 mt-10 mb-5"></div>
         </div>
       </motion.h1>
     </LampContainer>
@@ -174,7 +174,7 @@ export const LampContainer = ({
         <div className="absolute inset-auto z-40 h-44 w-full -translate-y-[12.5rem] bg-slate-950 "></div>
       </div>
 
-      <div className="relative z-50 flex -translate-y-80 flex-col items-center px-5">
+      <div className="relative z-50 flex -translate-y-[50vh] md:-translate-y-[30vh] flex-col items-center px-5">
         {children}
       </div>
     </div>
