@@ -11,7 +11,7 @@ const Support = () => {
   return (
     <>
       <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
-      <div className="relative ">
+      <div className="relative md:mt-0 mt-[115vh] ">
         <div className="image w-full h-screen overflow-hidden relative ">
           <img
             src={img1}
