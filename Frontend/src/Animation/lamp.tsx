@@ -71,9 +71,9 @@ export function LampDemo() {
           <br />
           <p className="w-full text-6xl md:text-8xl font-bold ml-20 -mb-12 md:ml-48" style={{ fontFamily: "Play" }}>Experience with <p className="decoration-3 decoration-green-600 underline ml-24 md:5xl md:ml-40" style={{ fontFamily: "Play" }}>NetWave</p></p>
           <br />
+          <div className="border border-[#3dc0f3] h-1 w-[70vw] bg-[#3dc0f3] ml-14 md:ml-10 mt-10 mb-5"></div>
           <br />
           <br />
-          <div className="border border-[#3dc0f3] h-1 w-[70vw] bg-[#3dc0f3] md:ml-10 mt-10 mb-5"></div>
         </div>
       </motion.h1>
     </LampContainer>
