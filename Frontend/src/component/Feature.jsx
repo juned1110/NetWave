@@ -7,7 +7,7 @@ const Feature = () => {
   return (
     <>
       <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
-      <div className="w-full h-screen mt-60 mb-10 flex justify-evenly relative">
+      <div className="w-full h-screen mt-[140vh] md:mt-60 mb-10 flex justify-evenly relative">
         <div className="left relative">
           <div className="w-full h-screen relative">
             <img
