@@ -65,7 +65,7 @@ const Experience = () => {
         </div>
         <div className="right">
           <div className="flex w-[40vw] h-[95vh] items-center relative left-[55vw] top-20 ">
-            <img src={img} className="rounded-r-3xl" />
+            <img src={img} className="rounded-r-3xl mb-96 md:mt-0" />
           </div>
           <div
             className="rounded-full h-36 w-36 absolute top-16 right-[80vh]"
@@ -73,10 +73,6 @@ const Experience = () => {
               background: "linear-gradient(90deg, #0061FF 0%, #60EFFF 100%)",
               backgroundImage:
                 "-moz-linear-gradient(90deg, #0061FF 0%, #60EFFF 100%)",
-              backgroundImage:
-                "-webkit-linear-gradient(90deg, #0061FF 0%, #60EFFF 100%)",
-              backgroundImage:
-                "linear-gradient(90deg, #0061FF 0%, #60EFFF 100%)",
               filter:
                 'progid:DXImageTransform.Microsoft.gradient( startColorstr="#0061FF", endColorstr="#60EFFF",GradientType=1)',
             }}
