@@ -8,7 +8,7 @@ const Feature = () => {
     <>
       <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
       <div className="w-full h-screen mt-[140vh] md:mt-60 mb-10 grid grid-cols-1 md:grid-cols-2 gap-6 relative">
-        <div className="left relative w-full h-[70vh] md:h-screen ml-14 md:ml-0">
+        <div className="left relative w-[80vw]  md:w-full h-[70vh] md:h-screen ml-12 md:ml-0 ">
           <img
             src={img1}
             className="w-full h-full bg-gradient-to-r to-transparent opacity-70 backdrop-filter backdrop-blur-3xl rounded-[40px]"
@@ -33,7 +33,7 @@ const Feature = () => {
             </p>
           </div>
         </div>
-        <div className="right w-full  h-[70vh] md:h-screen relative ml-14 md:ml-0">
+        <div className="right w-[80vw] md:w-full  h-[70vh] md:h-screen relative ml-12 md:ml-0">
           <img
             src={img2}
             alt="VR"
