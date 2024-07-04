@@ -80,22 +80,22 @@ const ContactusPage = () => {
   return (
     <>
       <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
-      <div className="w-full h-[115vh] flex p-28 pt-5 bg-gradient-to-r from-[#ffffff] to-[#ECE9E6]">
+      <div className="w-full min-h-screen flex flex-col sm:flex-row p-4 sm:p-28 pt-5 bg-gradient-to-r from-[#ffffff] to-[#ECE9E6]">
         <div
-          className="left h-[110vh] w-1/2 relative rounded-3xl mt-10"
+          className="left  sm:block sm:h-[110vh] sm:w-1/2 relative rounded-3xl mt-10 sm:mt-0 shadow-lg"
           style={{
             boxShadow:
               "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px",
           }}
         >
           <div
-            className="ml-16 w-36 py-4 rounded-md bg-[#03E9F4] text-center text-black font-bold text-sm mt-10"
+            className="ml-4 sm:ml-16 w-36 py-4 rounded-md bg-[#03E9F4] text-center text-black font-bold text-sm mt-10"
             style={{ fontFamily: "Play" }}
           >
             Hello {user.firstname} {user.lastname}
           </div>
           <p
-            className="ml-16 mt-1 text-3xl text-black font-bold"
+            className="ml-4 sm:ml-16 mt-1 text-3xl text-black font-bold "
             style={{ fontFamily: "Play" }}
           >
             Simple Process to Apply Service.
@@ -126,7 +126,7 @@ const ContactusPage = () => {
             </span>
           </div>
           <span
-            className="absolute left-44 top-[29vh] font-bold"
+            className="absolute left-44 sm:top-[22vh] md:top-[29vh] md:font-bold"
             style={{ fontFamily: "Play" }}
           >
             Check Coverage Availability
@@ -158,7 +158,7 @@ const ContactusPage = () => {
             </span>
           </div>
           <span
-            className="absolute left-44 top-[49vh] font-bold"
+            className="absolute left-44 top-[35vh] md:top-[49vh] font-bold "
             style={{ fontFamily: "Play" }}
           >
             Survey Location
@@ -185,7 +185,7 @@ const ContactusPage = () => {
             <span className="text-white font-bold text-4xl relative">3</span>
           </div>
           <span
-            className="absolute left-44 top-[69vh] font-bold"
+            className="absolute left-44 top-[47vh] md:top-[69vh] font-bold "
             style={{ fontFamily: "Play" }}
           >
             Apply Contract
@@ -212,7 +212,7 @@ const ContactusPage = () => {
             <span className="text-white font-bold text-4xl relative">4</span>
           </div>
           <span
-            className="absolute left-44 top-[89vh] font-bold"
+            className="absolute left-44 top-[58vh] md:top-[89vh] font-bold "
             style={{ fontFamily: "Play" }}
           >
             Connect with World
@@ -220,9 +220,9 @@ const ContactusPage = () => {
         </div>
 
         {/* Contact Form */}
-        <div className="right h-[110vh] w-1/2 rounded-r-3xl relative">
+        <div className="right sm:h-[110vh] sm:w-1/2 w-full rounded-r-3xl relative mt-10 sm:mt-0">
           <form onSubmit={handleSubmit}>
-            <div className="ml-12 mt-24 text-black font-bold">
+            <div className="ml-4 sm:ml-12 mt-4 sm:mt-24 text-black font-bold">
               <h1 className="text-3xl mb-2 " style={{ fontFamily: "Play" }}>
                 Contact Us
               </h1>
@@ -236,7 +236,7 @@ const ContactusPage = () => {
               <label className="block mb-2" style={{ fontFamily: "Play" }}>
                 Username
                 <input
-                  className="block w-3/4 mt-1 p-2 border border-gray-300 rounded-md"
+                  className="block w-full sm:w-3/4 mt-1 p-2 border border-gray-300 rounded-md"
                   type="text"
                   name="username"
                   value={contact.username}
@@ -248,7 +248,7 @@ const ContactusPage = () => {
               <label className="block mb-2" style={{ fontFamily: "Play" }}>
                 Location
                 <input
-                  className="block w-3/4 mt-1 p-2 border border-gray-300 rounded-md"
+                  className="block w-full sm:w-3/4 mt-1 p-2 border border-gray-300 rounded-md"
                   type="text"
                   name="location"
                   value={contact.location}
@@ -260,7 +260,7 @@ const ContactusPage = () => {
               <label className="block mb-2" style={{ fontFamily: "Play" }}>
                 Phone
                 <input
-                  className="block w-3/4 mt-1 p-2 border border-gray-300 rounded-md"
+                  className="block w-full sm:w-3/4 mt-1 p-2 border border-gray-300 rounded-md"
                   type="tel"
                   name="phone"
                   value={contact.phone}
@@ -272,7 +272,7 @@ const ContactusPage = () => {
               <label className="block mb-2" style={{ fontFamily: "Play" }}>
                 Email
                 <input
-                  className="block w-3/4 mt-1 p-2 border border-gray-300 rounded-md"
+                  className="block w-full sm:w-3/4 mt-1 p-2 border border-gray-300 rounded-md"
                   type="email"
                   name="email"
                   value={contact.email}
@@ -284,7 +284,7 @@ const ContactusPage = () => {
               <label className="block mb-2" style={{ fontFamily: "Play" }}>
                 Message
                 <textarea
-                  className="block w-3/4 mt-1 p-2 border border-gray-300 rounded-md"
+                  className="block w-full sm:w-3/4 mt-1 p-2 border border-gray-300 rounded-md"
                   name="message"
                   value={contact.message}
                   onChange={handleInput}
@@ -294,7 +294,7 @@ const ContactusPage = () => {
 
               <button
                 type="submit"
-                className="block w-3/4 mt-4 py-2 bg-[#03E9F4] text-black font-bold rounded-md"
+                className="block w-full sm:w-3/4 mt-4 py-2 bg-[#03E9F4] text-black font-bold rounded-md"
                 style={{ fontFamily: "Play" }}
               >
                 Send Message
