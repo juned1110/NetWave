@@ -6,7 +6,7 @@ const Adv = () => {
   return (
     <React.Fragment>
       <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
-      <div className="mt-12 mb-12">
+      <div className="-mt-[40vh] md:mt-12 mb-12">
         <div
           className="wrapper bg-[#03E9F4] rounded-2xl ml-20 mr-20 h-52 flex"
           style={{

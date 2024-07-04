@@ -7,7 +7,7 @@ const Promo = () => {
     <>
       <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
       <div className="relative">
-        <div className="image w-full h-[85vh] overflow-hidden relative">
+        <div className="image w-full overflow-hidden relative">
           <img src={img} alt="Promotional Image" />
           <div
             className="absolute top-0 left-0 w-[15vw] md:w-[10vw] text-center text-white bg-[#03E9F4] py-1 mt-32 md:mt-40 ml-16 md:ml-48 rounded-xl"

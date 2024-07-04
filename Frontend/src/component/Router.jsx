@@ -12,9 +12,9 @@ const Router = () => {
   return (
     <>
       <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
-      <div className="flex">
-        <div className="left w-[50vw] h-[100vh]">
-          <div className="w-full h-screen mt-48 ">
+      <div className="flex w-full h-screen">
+        <div className="left w-[50vw] h-[50vh] md:h-screen  ">
+          <div className="w-full h-screen mt-20 md:mt-48 ">
             <span
               style={{ fontFamily: "Play" }}
               className="bg-[#3dc0f3] text-[#f1f1f1] rounded-sm p-1 px-4 text-sm ml-12"
@@ -34,12 +34,12 @@ const Router = () => {
             </button>
           </div>
         </div>
-        <div className="mid w-[50vw] h-[100vh]">
-          <img src={img} alt="" />
+        <div className="mid w-[50vw] h-[50vh] md:h-[100vh]">
+          <img src={img} alt="" className="mt-14 md:mt-0" />
         </div>
-        <div className="right w-[50vw] h-[100vh]">
+        <div className="right w-[50vw] h-[50vh] md:h-screen">
           <div className="w-full h-screen flex flex-col gap-10">
-            <p className="mt-48 w-full flex items-center">
+            <p className="mt-32 md:mt-48 w-full flex items-center">
               <FontAwesomeIcon
                 icon={faEarthAmericas}
                 style={{ color: "#3dc0f3" }}
