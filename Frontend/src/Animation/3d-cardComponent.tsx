@@ -17,7 +17,7 @@ export function ThreeDCardDemo() {
   const { services } = useAuth();
 
   return (
-    <div className="inter-var grid grid-cols-1 md:grid-cols-2 p-6">
+    <div className="inter-var grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-6">
       {services.map((service, index) => (
         <CardContainer key={index}>
           <CardBody className="bg-gray-50 relative group/card hover:shadow-2xl hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full h-auto rounded-xl p-6 border transition-transform duration-300 ease-in-out transform hover:scale-105">
