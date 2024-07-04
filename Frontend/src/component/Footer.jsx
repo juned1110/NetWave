@@ -5,28 +5,32 @@ const Footer = () => {
   return (
     <>
       <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
-      <footer className="bg-gray-800 text-white py-6 mt-[65vh] w-full h-[40vh] rounded-t-[5vh]">
+      <footer className="bg-gray-800 text-white py-6 -mt-[40vh] md:mt-[10vh] w-full h-[40vh] rounded-t-[5vh]">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 mt-4">
+            <div className="mb-4 mt-4 ">
               <h2 className="text-lg font-bold" style={{ fontFamily: "Play" }}>
-                Contact Information
+                <center>Contact Information</center>
               </h2>
-              <p style={{ fontFamily: "Play" }}>Email: example@example.com</p>
-              <p style={{ fontFamily: "Play" }}>Phone: +1 234 567 890</p>
-              <p style={{ fontFamily: "Play" }}>
+              <center style={{ fontFamily: "Play" }}>
+                Email: example@example.com
+              </center>
+              <center style={{ fontFamily: "Play" }}>
+                Phone: +1 234 567 890
+              </center>
+              <center style={{ fontFamily: "Play" }}>
                 Address: 123 Main Street, Pune, India
-              </p>
+              </center>
             </div>
             <div>
               <h2
-                className="text-lg font-bold mb-2 ml-9"
+                className="text-lg font-bold  sm:mt-10 mb-2 ml-9"
                 style={{ fontFamily: "Play" }}
               >
                 Follow Us
               </h2>
               <div className="flex space-x-4">
-                <a href="#" className="hover:text-gray-400">
+                <a href="#">
                   <svg
                     className="w-10 h-10"
                     xmlns="http://www.w3.org/2000/svg"
@@ -42,7 +46,7 @@ const Footer = () => {
                     ></path>
                   </svg>
                 </a>
-                <a href="#" className="hover:text-gray-400">
+                <a href="#">
                   <svg
                     className="w-10 h-10"
                     xmlns="http://www.w3.org/2000/svg"
@@ -143,7 +147,7 @@ const Footer = () => {
                     </g>
                   </svg>
                 </a>
-                <a href="#" className="hover:text-gray-400">
+                <a href="#">
                   <svg
                     className="w-10 h-10"
                     xmlns="http://www.w3.org/2000/svg"
