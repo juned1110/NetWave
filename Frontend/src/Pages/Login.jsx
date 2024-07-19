@@ -8,10 +8,14 @@ import { useAuth } from "../store/auth";
 import { toast } from "react-toastify";
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 const URL = "https://net-wave-frontend.vercel.app/api/auth/login"; 
 =======
 const URL = "http://localhost:5000/api/auth/login";
 >>>>>>> parent of 29bae9f (bug fix)
+=======
+const URL = "https://net-wave-nu.vercel.app/api/auth/login";
+>>>>>>> parent of a20144b ( bug fix)
 
 const Login = (props) => {
   const loginImgRef = useRef();

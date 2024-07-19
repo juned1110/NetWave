@@ -45,7 +45,7 @@ const ContactusPage = () => {
     try {
 <<<<<<< HEAD
       const response = await fetch(
-        "https://net-wave-frontend.vercel.app/api/form/contact",
+        "https://net-wave-nu.vercel.app/api/form/contact",
         {
           method: "POST",
           headers: {
