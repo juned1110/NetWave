@@ -19,15 +19,8 @@ const AdminUpdate = () => {
   const getSingleUserData = async () => {
     try {
       const response = await fetch(
-<<<<<<< HEAD
-<<<<<<< HEAD
-        `https://net-wave-frontend.vercel.app/api/admin/users/${params.id}`,
-=======
         `http://localhost:5000/api/admin/users/${params.id}`,
->>>>>>> parent of 29bae9f (bug fix)
-=======
-        `https://net-wave-nu.vercel.app/api/admin/users/${params.id}`,
->>>>>>> parent of a20144b ( bug fix)
+
         {
           method: "GET",
           headers: {
@@ -62,15 +55,7 @@ const AdminUpdate = () => {
 
     try {
       const response = await fetch(
-<<<<<<< HEAD
-<<<<<<< HEAD
-        `https://net-wave-frontend.vercel.app/api/admin/users/update/${params.id}`,
-=======
         `http://localhost:5000/api/admin/users/update/${params.id}`,
->>>>>>> parent of 29bae9f (bug fix)
-=======
-        `https://net-wave-nu.vercel.app/api/admin/users/update/${params.id}`,
->>>>>>> parent of a20144b ( bug fix)
         {
           method: "PATCH",
           headers: {

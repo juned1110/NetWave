@@ -43,18 +43,6 @@ const ContactusPage = () => {
     e.preventDefault();
 
     try {
-<<<<<<< HEAD
-      const response = await fetch(
-        "https://net-wave-nu.vercel.app/api/form/contact",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(contact),
-        }
-      );
-=======
       const response = await fetch("http://localhost:5000/api/form/contact", {
         method: "POST",
         headers: {
@@ -62,7 +50,6 @@ const ContactusPage = () => {
         },
         body: JSON.stringify(contact),
       });
->>>>>>> parent of 29bae9f (bug fix)
 
       if (response.ok) {
         setContact(defaultContactFormData);

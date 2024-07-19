@@ -14,15 +14,7 @@ const PackagesPage = () => {
   }, [user, isLoggedIn]);
 
   const handlePayment = async (amount) => {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    const orderURL = "https://net-wave-frontend.vercel.app/api/payment/order";
-=======
     const orderURL = "http://localhost:5000/api/payment/order";
->>>>>>> parent of 29bae9f (bug fix)
-=======
-    const orderURL = "https://net-wave-nu.vercel.app/api/payment/order";
->>>>>>> parent of a20144b ( bug fix)
     setIsLoading(true);
     setError(null);
     try {
