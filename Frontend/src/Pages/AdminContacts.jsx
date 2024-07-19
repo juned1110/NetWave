@@ -10,7 +10,11 @@ const AdminContacts = () => {
   const getContactsData = async () => {
     setLoading(true);
     try {
+<<<<<<< HEAD
       const response = await fetch("https://net-wave-frontend.vercel.app/api/admin/contacts", {
+=======
+      const response = await fetch("http://localhost:5000/api/admin/contacts", {
+>>>>>>> parent of 29bae9f (bug fix)
         method: "GET",
         headers: {
           Authorization: AuthorizationToken,
@@ -32,7 +36,11 @@ const AdminContacts = () => {
   const deleteContactById = async (id) => {
     try {
       const response = await fetch(
+<<<<<<< HEAD
         `https://net-wave-frontend.vercel.app/api/admin/contacts/delete/${id}`,
+=======
+        `http://localhost:5000/api/admin/contacts/delete/${id}`,
+>>>>>>> parent of 29bae9f (bug fix)
         {
           method: "DELETE",
           headers: {

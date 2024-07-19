@@ -2,11 +2,12 @@ import React from "react";
 import img from "../assets/dad.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
+import GoogleFontLoader from "react-google-font-loader";
 
 const Experience = () => {
   return (
     <>
-      {/* <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} /> */}
+      <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
       <div className="w-full h-screen relative">
         <div
           className=" absolute top-24 left-20 w-36 p-1 py-2 rounded-md bg-[#03E9F4] text-center text-black font-bold text-sm"

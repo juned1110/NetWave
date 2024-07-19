@@ -1,12 +1,17 @@
 import React, { useRef, useState } from "react";
 import img from "../assets/logo.png";
 import { NavLink, useNavigate } from "react-router-dom";
+import GoogleFontLoader from "react-google-font-loader";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useAuth } from "../store/auth";
 import { toast } from "react-toastify";
 
+<<<<<<< HEAD
 const URL = "https://net-wave-frontend.vercel.app/api/auth/login"; 
+=======
+const URL = "http://localhost:5000/api/auth/login";
+>>>>>>> parent of 29bae9f (bug fix)
 
 const Login = (props) => {
   const loginImgRef = useRef();
@@ -67,7 +72,7 @@ const Login = (props) => {
 
   return (
     <>
-      {/* <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} /> */}
+      <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
       {props.showModal ? (
         <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 backdrop-filter backdrop-blur-lg z-40">
           <div

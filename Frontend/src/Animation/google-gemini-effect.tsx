@@ -2,6 +2,7 @@
 import { cn } from "../utils/cn";
 import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
 import React from "react";
+import GoogleFontLoader from "react-google-font-loader";
 
 
 const transition = {
@@ -34,7 +35,7 @@ export const GoogleGeminiEffect = ({
   );
   return (
     <div className={cn("sticky top-36", className)}>
-      {/* <GoogleFontLoader fonts={[{ font: "Black Ops One", weights: [400, 700] }]} /> */}
+      <GoogleFontLoader fonts={[{ font: "Black Ops One", weights: [400, 700] }]} />
       <div className="text-lg md:text-7xl font-bold italic pb-4 text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-100 to-neutral-300 h-[110vh] flex items-center">
         <motion.h1
           className="w-full h-[40vh] mb-40 text-8xl bg-clip-text text-transparent text-center"

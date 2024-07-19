@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import img from "../assets/logo.png";
+import GoogleFontLoader from "react-google-font-loader";
 import { useNavigate } from "react-router-dom";
 import Login from "../Pages/Login";
 import { useAuth } from "../store/auth";
 import { toast } from "react-toastify";
 
+<<<<<<< HEAD
 const URL = "https://net-wave-frontend.vercel.app/api/auth/register";
+=======
+const URL = "http://localhost:5000/api/auth/register";
+>>>>>>> parent of 29bae9f (bug fix)
 
 function Signup(props) {
   const [showModal, setShowModal] = useState(false);
@@ -70,7 +75,7 @@ function Signup(props) {
 
   return (
     <>
-      {/* <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} /> */}
+      <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
       <div className="min-w-screen min-h-screen bg-black bg-opacity-50 backdrop-filter backdrop-blur-lg flex items-center justify-center px-5 py-5 z-auto">
         <div
           className="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden"

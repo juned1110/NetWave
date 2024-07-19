@@ -2,11 +2,12 @@ import React from "react";
 import img1 from "../assets/team.png";
 import img2 from "../assets/dad.png";
 import img3 from "../assets/support.png";
+import GoogleFontLoader from "react-google-font-loader";
 
 const Fiber = () => {
   return (
     <>
-      {/* <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} /> */}
+      <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
       <div className="w-full h-screen relative flex flex-col items-center -mt-[50vh] md:mt-0">
         <div
           className="absolute left-[50%] transform -translate-x-1/2 top-32 w-36 p-1 py-2 rounded-md bg-[#03E9F4] text-center text-black font-bold text-sm"

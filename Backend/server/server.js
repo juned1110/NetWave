@@ -10,9 +10,13 @@ const connectDb = require("./utils/db");
 const errorMiddleware = require("./middlewares/error-middleware");
 const paymentRoute = require("./router/payments");
 
+// const bodyParser = require("body-parser");
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
+
 // CORS configuration
 const corsOptions = {
-  origin: "https://net-wave-nu.vercel.app",
+  origin: "http://localhost:5173",
   methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
   credentials: true,
 };
@@ -24,7 +28,7 @@ app.use("/api/auth", authRoute);
 app.use("/api/form", contactRoute);
 app.use("/api/data", serviceRoute);
 
-//defining admin routes
+//defining admon routes
 app.use("/api/admin", adminRoute);
 
 //Payment Gateway route

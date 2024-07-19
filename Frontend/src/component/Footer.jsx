@@ -1,30 +1,31 @@
 import React from "react";
+import GoogleFontLoader from "react-google-font-loader";
 
 const Footer = () => {
   return (
     <>
-      {/* <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} /> */}
+      <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
       <footer className="bg-gray-800 text-white xs:mt-1 py-6 -mt-[40vh] md:mt-[10vh] w-full h-[40vh] rounded-t-[5vh]">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 mt-4 ">
-              <h2 className="text-lg font-bold" >
+              <h2 className="text-lg font-bold" style={{ fontFamily: "Play" }}>
                 <center>Contact Information</center>
               </h2>
-              <center >
+              <center style={{ fontFamily: "Play" }}>
                 Email: example@example.com
               </center>
-              <center >
+              <center style={{ fontFamily: "Play" }}>
                 Phone: +1 234 567 890
               </center>
-              <center  >
+              <center style={{ fontFamily: "Play" }}>
                 Address: 123 Main Street, Pune, India
               </center>
             </div>
             <div>
               <h2
                 className="text-lg font-bold  sm:mt-10 mb-2 ml-9"
-                 
+                style={{ fontFamily: "Play" }}
               >
                 Follow Us
               </h2>
@@ -169,7 +170,7 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <p className="text-center mt-4"  >
+          <p className="text-center mt-4" style={{ fontFamily: "Play" }}>
             © 2024 All rights reserved.
           </p>
         </div>

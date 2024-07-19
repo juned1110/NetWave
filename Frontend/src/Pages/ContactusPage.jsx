@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import GoogleFontLoader from "react-google-font-loader";
 import { useAuth } from "../store/auth";
 import { toast } from "react-toastify";
 
@@ -42,6 +43,7 @@ const ContactusPage = () => {
     e.preventDefault();
 
     try {
+<<<<<<< HEAD
       const response = await fetch(
         "https://net-wave-frontend.vercel.app/api/form/contact",
         {
@@ -52,6 +54,15 @@ const ContactusPage = () => {
           body: JSON.stringify(contact),
         }
       );
+=======
+      const response = await fetch("http://localhost:5000/api/form/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(contact),
+      });
+>>>>>>> parent of 29bae9f (bug fix)
 
       if (response.ok) {
         setContact(defaultContactFormData);
@@ -81,7 +92,7 @@ const ContactusPage = () => {
 
   return (
     <>
-      {/* <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} /> */}
+      <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
       <div className="w-full min-h-screen flex flex-col sm:flex-row p-4 sm:p-28 pt-5 bg-gradient-to-r from-[#ffffff] to-[#ECE9E6]">
         <div
           className="left  sm:block sm:h-[110vh] sm:w-1/2 relative rounded-3xl mt-10 sm:mt-0 shadow-lg"

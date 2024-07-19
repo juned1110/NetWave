@@ -1,11 +1,12 @@
 import React from "react";
 import img1 from "../assets/family.png";
 import img2 from "../assets/vr.png";
+import GoogleFontLoader from "react-google-font-loader";
 
 const Feature = () => {
   return (
     <>
-      {/* <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} /> */}
+      <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
       <div className="w-full h-screen mt-[140vh] md:mt-60 mb-10 grid grid-cols-1 md:grid-cols-2 gap-6 relative">
         <div className="left relative w-[80vw]  md:w-full h-[60vh] md:h-screen ml-12 md:ml-0 ">
           <img
