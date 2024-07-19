@@ -18,7 +18,19 @@ const AdminUsers = () => {
 
       console.log("AuthorizationToken:", AuthorizationToken);
 
+<<<<<<< HEAD
       const response = await fetch("http://localhost:5000/api/admin/users", {
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+      const response = await fetch("https://net-wave-frontend.vercel.app/api/admin/users", {
+=======
+      const response = await fetch("http://localhost:5000/api/admin/users", {
+>>>>>>> parent of 29bae9f (bug fix)
+=======
+      const response = await fetch("https://net-wave-nu.vercel.app/api/admin/users", {
+>>>>>>> parent of a20144b ( bug fix)
+>>>>>>> d156d70335fc43b1d8628ea8ff14b8f38cb86b36
         method: "GET",
         headers: {
           Authorization: AuthorizationToken,
@@ -42,7 +54,19 @@ const AdminUsers = () => {
   const deleteUser = async (id) => {
     try {
       const response = await fetch(
+<<<<<<< HEAD
         `http://localhost:5000/api/admin/users/delete/${id}`,
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        `https://net-wave-frontend.vercel.app/api/admin/users/delete/${id}`,
+=======
+        `http://localhost:5000/api/admin/users/delete/${id}`,
+>>>>>>> parent of 29bae9f (bug fix)
+=======
+        `https://net-wave-nu.vercel.app/api/admin/users/delete/${id}`,
+>>>>>>> parent of a20144b ( bug fix)
+>>>>>>> d156d70335fc43b1d8628ea8ff14b8f38cb86b36
         {
           method: "DELETE",
           headers: {
