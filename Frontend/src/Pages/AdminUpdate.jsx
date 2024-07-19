@@ -19,7 +19,7 @@ const AdminUpdate = () => {
   const getSingleUserData = async () => {
     try {
       const response = await fetch(
-        `https://net-wave-nu.vercel.app/api/admin/users/${params.id}`,
+        `https://net-wave-frontend.vercel.app/api/admin/users/${params.id}`,
         {
           method: "GET",
           headers: {
@@ -54,7 +54,7 @@ const AdminUpdate = () => {
 
     try {
       const response = await fetch(
-        `https://net-wave-nu.vercel.app/api/admin/users/update/${params.id}`,
+        `https://net-wave-frontend.vercel.app/api/admin/users/update/${params.id}`,
         {
           method: "PATCH",
           headers: {

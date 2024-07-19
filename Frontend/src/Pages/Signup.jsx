@@ -5,7 +5,7 @@ import Login from "../Pages/Login";
 import { useAuth } from "../store/auth";
 import { toast } from "react-toastify";
 
-const URL = "https://net-wave-nu.vercel.app/api/auth/register";
+const URL = "https://net-wave-frontend.vercel.app/api/auth/register";
 
 function Signup(props) {
   const [showModal, setShowModal] = useState(false);

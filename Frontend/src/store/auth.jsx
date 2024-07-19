@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }) => {
 
     try {
       setIsLoading(true);
-      const response = await fetch("http://localhost:5000/api/auth/user", {
+      const response = await fetch("https://net-wave-frontend.vercel.app/api/auth/user", {
         method: "GET",
         headers: {
           Authorization: AuthorizationToken,
@@ -59,7 +59,7 @@ export const AuthProvider = ({ children }) => {
   // to fetch services data from database
   const getServices = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/data/service", {
+      const response = await fetch("https://net-wave-frontend.vercel.app/api/data/service", {
         method: "GET",
       });
 

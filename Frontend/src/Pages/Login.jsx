@@ -6,7 +6,7 @@ import gsap from "gsap";
 import { useAuth } from "../store/auth";
 import { toast } from "react-toastify";
 
-const URL = "https://net-wave-nu.vercel.app/api/auth/login";
+const URL = "https://net-wave-frontend.vercel.app/api/auth/login"; 
 
 const Login = (props) => {
   const loginImgRef = useRef();

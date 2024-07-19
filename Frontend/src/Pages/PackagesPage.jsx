@@ -13,7 +13,7 @@ const PackagesPage = () => {
   }, [user, isLoggedIn]);
 
   const handlePayment = async (amount) => {
-    const orderURL = "https://net-wave-nu.vercel.app/api/payment/order";
+    const orderURL = "https://net-wave-frontend.vercel.app/api/payment/order";
     setIsLoading(true);
     setError(null);
     try {
