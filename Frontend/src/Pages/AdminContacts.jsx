@@ -11,10 +11,14 @@ const AdminContacts = () => {
     setLoading(true);
     try {
 <<<<<<< HEAD
+<<<<<<< HEAD
       const response = await fetch("https://net-wave-frontend.vercel.app/api/admin/contacts", {
 =======
       const response = await fetch("http://localhost:5000/api/admin/contacts", {
 >>>>>>> parent of 29bae9f (bug fix)
+=======
+      const response = await fetch("https://net-wave-nu.vercel.app/api/admin/contacts", {
+>>>>>>> parent of a20144b ( bug fix)
         method: "GET",
         headers: {
           Authorization: AuthorizationToken,
@@ -37,10 +41,14 @@ const AdminContacts = () => {
     try {
       const response = await fetch(
 <<<<<<< HEAD
+<<<<<<< HEAD
         `https://net-wave-frontend.vercel.app/api/admin/contacts/delete/${id}`,
 =======
         `http://localhost:5000/api/admin/contacts/delete/${id}`,
 >>>>>>> parent of 29bae9f (bug fix)
+=======
+        `https://net-wave-nu.vercel.app/api/admin/contacts/delete/${id}`,
+>>>>>>> parent of a20144b ( bug fix)
         {
           method: "DELETE",
           headers: {
