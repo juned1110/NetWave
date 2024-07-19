@@ -1,11 +1,10 @@
 import React from "react";
 import img1 from "../assets/supports.png";
-import GoogleFontLoader from "react-google-font-loader";
 
 const Support = () => {
   return (
     <>
-      <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
+      {/* <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} /> */}
       <div className="relative md:mt-0 mt-[55vh]  ">
         <div className="image w-full h-screen overflow-hidden relative ">
           <img

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import GoogleFontLoader from "react-google-font-loader";
 import { useAuth } from "../store/auth";
 import axios from "axios";
 
@@ -14,7 +13,7 @@ const PackagesPage = () => {
   }, [user, isLoggedIn]);
 
   const handlePayment = async (amount) => {
-    const orderURL = "http://localhost:5000/api/payment/order";
+    const orderURL = "https://net-wave-nu.vercel.app/api/payment/order";
     setIsLoading(true);
     setError(null);
     try {
@@ -71,7 +70,7 @@ const PackagesPage = () => {
 
   return (
     <>
-      <GoogleFontLoader fonts={[{ font: "Lilita One", weights: [400, 700] }]} />
+      {/* <GoogleFontLoader fonts={[{ font: "Lilita One", weights: [400, 700] }]} /> */}
       <div className="w-full h-screen relative bg-gray-100 flex flex-col items-center pt-10">
         <div
           className="w-full text-center text-4xl font-bold mb-8 text-gray-800"

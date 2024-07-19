@@ -1,11 +1,10 @@
 import React from "react";
 import img from "../assets/promo.png";
-import GoogleFontLoader from "react-google-font-loader";
 
 const Promo = () => {
   return (
     <>
-      <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
+      {/* <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} /> */}
       <div className="relative">
         <div className="image w-full overflow-hidden relative">
           <img src={img} alt="Promotional Image" />

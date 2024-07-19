@@ -6,12 +6,11 @@ import {
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
 import img from "../assets/router.png";
-import GoogleFontLoader from "react-google-font-loader";
 
 const Router = () => {
   return (
     <>
-      <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
+      {/* <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} /> */}
       <div className="flex w-full h-screen">
         <div className="left w-[50vw] h-[50vh] md:h-screen  ">
           <div className="w-full h-screen mt-20 md:mt-48 ">

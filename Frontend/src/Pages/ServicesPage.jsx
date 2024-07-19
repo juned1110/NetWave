@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import GoogleFontLoader from "react-google-font-loader";
 import { useAuth } from "../store/auth";
 import img1 from "../assets/card1.png";
 import img2 from "../assets/card2.png";
@@ -38,22 +37,22 @@ const ServicesPage = () => {
 
   return (
     <>
-      <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
+      {/* <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} /> */}
       <div className="relative w-full h-auto">
         <div className="absolute md:mb-10 left-4 md:left-14 w-[11rem] py-4 rounded-md bg-[#03E9F4] text-center text-black font-bold text-sm">
           <div
             className="flex justify-center items-center h-full"
-            style={{ fontFamily: "Play" }}
+            // style={{ fontFamily: "Play" }}
           >
             Hello {user.firstname} {user.lastname}
           </div>
         </div>
         <div
           className="absolute mt-20 left-4 md:left-14 text-2xl md:text-4xl text-black font-bold"
-          style={{ fontFamily: "Play" }}
+          // style={{ fontFamily: "Play" }}
         >
           We are Professional Internet Service
-          <p style={{ fontFamily: "Play" }}>Provider.</p>
+          <p>Provider.</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-6 md:p-12 mt-36 md:mt-28">

@@ -1,11 +1,10 @@
 import React from "react";
 import img from "../assets/errorImage.gif";
-import GoogleFontLoader from "react-google-font-loader";
 
 const Error = () => {
   return (
     <>
-      <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
+      {/* <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} /> */}
       <div className="w-full h-screen bg-white flex flex-col items-center justify-center relative">
         <p
           className="text-9xl font-semibold absolute top-10"

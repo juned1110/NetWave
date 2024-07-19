@@ -18,7 +18,7 @@ const AdminUsers = () => {
 
       console.log("AuthorizationToken:", AuthorizationToken);
 
-      const response = await fetch("http://localhost:5000/api/admin/users", {
+      const response = await fetch("https://net-wave-nu.vercel.app/api/admin/users", {
         method: "GET",
         headers: {
           Authorization: AuthorizationToken,
@@ -42,7 +42,7 @@ const AdminUsers = () => {
   const deleteUser = async (id) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/admin/users/delete/${id}`,
+        `https://net-wave-nu.vercel.app/api/admin/users/delete/${id}`,
         {
           method: "DELETE",
           headers: {

@@ -2,11 +2,10 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import { cn } from "../utils/cn";
-import GoogleFontLoader from "react-google-font-loader";
 
 
 export function LampDemo() {
-  <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
+  // <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
   
   const words = ["HighVelociity", "QuickMoving", "HyperSpeedy", "SpeedDriiven"];
   const [currentWord, setCurrentWord] = useState(words[0]);

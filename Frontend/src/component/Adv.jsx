@@ -1,11 +1,10 @@
 import React from "react";
 import img from "../assets/advert.png";
-import GoogleFontLoader from "react-google-font-loader";
 
 const Adv = () => {
   return (
     <React.Fragment>
-      <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
+      {/* <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} /> */}
       <div className="-mt-[40vh] md:mt-12 mb-12">
         <div
           className="wrapper bg-[#03E9F4] rounded-2xl ml-4 mr-4 md:ml-20 md:mr-20 h-52 flex"

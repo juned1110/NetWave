@@ -10,7 +10,6 @@ import Experience from "../component/Experience";
 import Fiber from "../component/Fiber";
 import Feature from "../component/Feature";
 import Support from "../component/Support";
-import GoogleFontLoader from "react-google-font-loader";
 import { useAuth } from "../store/auth";
 import { FaPowerOff, FaBars } from "react-icons/fa";
 import gsap from "gsap";
@@ -116,10 +115,10 @@ const Navbar = () => {
 
   return (
     <>
-      <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
+      {/* <GoogleFontLoader fonts={[{ font: "Play", weights: [400, 700] }]} />
       <GoogleFontLoader
         fonts={[{ font: "Signika Negative", weights: [400, 700] }]}
-      />
+      /> */}
       <div
         className="bg-zinc-900 rounded-full sticky top-0 shadow-xl shadow-[#504848] mb-[2px] z-20"
         ref={navbarRef}
