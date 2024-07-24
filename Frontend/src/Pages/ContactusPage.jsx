@@ -43,21 +43,6 @@ const ContactusPage = () => {
     e.preventDefault();
 
     try {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-      const response = await fetch(
-        "https://net-wave-nu.vercel.app/api/form/contact",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(contact),
-        }
-      );
-=======
->>>>>>> d156d70335fc43b1d8628ea8ff14b8f38cb86b36
       const response = await fetch("http://localhost:5000/api/form/contact", {
         method: "POST",
         headers: {
